@@ -6,6 +6,7 @@ import Services from '../components/Services';
 import HowItWorks from '../components/HowItWorks';
 import Comparison from '../components/Comparison';
 import CtaSection from '../components/CtaSection';
+import InstagramSection from '../components/InstagramSection';
 import Faq from '../components/Faq';
 import Footer from '../components/Footer';
 
@@ -19,6 +20,7 @@ export default function LandingPage() {
       <HowItWorks />
       <Comparison />
       <CtaSection />
+      <InstagramSection />
       <Faq />
       <Footer />
     </>

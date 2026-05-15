@@ -8,33 +8,27 @@ const fadeUp = {
 const services = [
   {
     title: "Meta Ads Campaign Strategy",
-    desc: "Customized ad strategies tailored for D2C, Ecomm & Dropshipping brands to maximize ROI.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "Customized ad strategies tailored for D2C, Ecomm & Dropshipping brands to maximize ROI."
   },
   {
     title: "Full Campaign Setup",
-    desc: "End-to-end setup from targeting, creatives, to placements ensuring high-performing campaigns.",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "End-to-end setup from targeting, creatives, to placements ensuring high-performing campaigns."
   },
   {
     title: "Creative & Audience Testing",
-    desc: "Continuous testing of ad creatives, copies, and audiences to identify winning combinations.",
-    img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "Continuous testing of ad creatives, copies, and audiences to identify winning combinations."
   },
   {
     title: "Scaling & Optimization",
-    desc: "Data-driven scaling techniques to increase budget while maintaining or improving ROAS.",
-    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "Data-driven scaling techniques to increase budget while maintaining or improving ROAS."
   },
   {
     title: "Performance Monitoring & Reporting",
-    desc: "Real-time tracking and comprehensive reporting of key metrics and campaign performance.",
-    img: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "Real-time tracking and comprehensive reporting of key metrics and campaign performance."
   },
   {
     title: "ROI-Focused Growth Planning",
-    desc: "Long-term strategic planning to ensure sustainable and profitable business growth.",
-    img: "https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    desc: "Long-term strategic planning to ensure sustainable and profitable business growth."
   }
 ];
 
@@ -64,13 +58,6 @@ export default function Services() {
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
               className="min-w-[320px] md:min-w-[380px] bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col snap-start overflow-hidden hover:shadow-md transition-shadow"
             >
-              <div className="h-56 w-full relative overflow-hidden bg-gray-50 flex-shrink-0">
-                <img 
-                  src={service.img} 
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-text-dark mb-2">{service.title}</h3>
                 <p className="text-text-muted mb-6 flex-grow">{service.desc}</p>

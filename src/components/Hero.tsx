@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -7,6 +8,8 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className="pt-24 pb-12 md:pt-36 md:pb-16 px-4 bg-white overflow-hidden flex flex-col items-center text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
@@ -37,13 +40,13 @@ export default function Hero() {
           >
             Book a Call
           </motion.a>
-          <motion.a 
+          <motion.button 
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            href="#results" 
+            onClick={() => navigate('/case-studies')}
             className="bg-gray-50 hover:bg-gray-100 text-text-dark border border-gray-200 px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-medium transition-colors inline-block"
           >
             See Our Work
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         <motion.div 
