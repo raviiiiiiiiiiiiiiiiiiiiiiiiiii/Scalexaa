@@ -3,33 +3,25 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import BrandsMarquee from './components/BrandsMarquee';
-import Results from './components/Results';
-import Services from './components/Services';
-import HowItWorks from './components/HowItWorks';
-import Comparison from './components/Comparison';
-import CtaSection from './components/CtaSection';
-import Faq from './components/Faq';
-import Footer from './components/Footer';
+import LandingPage from './pages/LandingPage';
+import CaseStudiesList from './pages/CaseStudiesList';
+import CaseStudyDetail from './pages/CaseStudyDetail';
 import LiveNotification from './components/LiveNotification';
 
 export default function App() {
   return (
-    <div className="relative antialiased selection:bg-primary selection:text-white">
-      <Navbar />
-      <Hero />
-      <BrandsMarquee />
-      <Results />
-      <Services />
-      <HowItWorks />
-      <Comparison />
-      <CtaSection />
-      <Faq />
-      <Footer />
-      
-      <LiveNotification />
-    </div>
+    <Router>
+      <div className="relative antialiased selection:bg-primary selection:text-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/case-studies" element={<CaseStudiesList />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+        </Routes>
+        <LiveNotification />
+      </div>
+    </Router>
   );
 }
