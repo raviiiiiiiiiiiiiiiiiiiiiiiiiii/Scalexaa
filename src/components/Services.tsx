@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { Rocket } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,11 +43,16 @@ export default function Services() {
     <section id="services" className="py-20 md:py-24 bg-white px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
+          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
+            <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              Our Expertise
+            </span>
+          </motion.div>
           <motion.h2 
             initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-            className="text-3xl md:text-5xl font-bold text-text-dark flex items-center justify-center gap-2"
+            className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Services That Deliver. Results That Pay <Rocket className="w-8 h-8 text-red-500" />
+            <span className="text-text-dark">Services That Deliver.</span> <span className="text-gray-400">Results That Pay</span>
           </motion.h2>
         </div>
 

@@ -6,9 +6,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import BrandsMarquee from './components/BrandsMarquee';
+import Results from './components/Results';
 import Services from './components/Services';
 import HowItWorks from './components/HowItWorks';
-import Results from './components/Results';
 import Comparison from './components/Comparison';
 import CtaSection from './components/CtaSection';
 import Faq from './components/Faq';
@@ -21,9 +21,9 @@ export default function App() {
       <Navbar />
       <Hero />
       <BrandsMarquee />
+      <Results />
       <Services />
       <HowItWorks />
-      <Results />
       <Comparison />
       <CtaSection />
       <Faq />

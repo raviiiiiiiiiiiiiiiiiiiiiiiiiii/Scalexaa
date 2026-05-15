@@ -8,12 +8,12 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="pt-24 pb-16 md:pt-40 md:pb-24 px-4 bg-white overflow-hidden flex flex-col items-center text-center">
+    <section className="pt-24 pb-12 md:pt-36 md:pb-16 px-4 bg-white overflow-hidden flex flex-col items-center text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         <motion.h1 
           initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-7xl font-bold tracking-tight text-text-dark leading-[1.1] mb-4 md:mb-6"
+          className="text-3xl md:text-7xl font-bold tracking-tight text-text-dark leading-[1.1] mb-6 md:mb-8"
         >
           Scaling Brands <br />
           with <span className="text-primary">Meta Ads</span>
@@ -21,14 +21,14 @@ export default function Hero() {
 
         <motion.p 
           initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="text-sm md:text-xl text-text-dark mb-8 md:mb-10 max-w-2xl font-medium px-4"
+          className="text-sm md:text-xl text-text-dark mb-10 max-w-2xl font-medium px-4"
         >
           High-Performance Campaigns. Data-Driven Decisions. Profitable Growth.
         </motion.p>
 
         <motion.div 
           initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="flex flex-row justify-center gap-3 mb-10 md:mb-12"
+          className="flex flex-row justify-center gap-3 mb-12 md:mb-14"
         >
           <motion.a 
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
@@ -48,7 +48,7 @@ export default function Hero() {
 
         <motion.div 
           initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="flex flex-col md:flex-row items-center justify-center gap-2 mb-4 md:mb-3"
+          className="flex flex-col md:flex-row items-center justify-center gap-2 mb-4"
         >
           <div className="flex gap-1 text-primary">
             {[1, 2, 3, 4, 5].map((star) => (
@@ -62,7 +62,7 @@ export default function Hero() {
 
         <motion.div 
           initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="flex -space-x-2 md:-space-x-3 mb-12 md:mb-16"
+          className="flex -space-x-2 md:-space-x-3"
         >
            {[...Array(5)].map((_, i) => (
             <img 
@@ -72,17 +72,6 @@ export default function Hero() {
               alt="Client avatar"
             />
           ))}
-        </motion.div>
-
-        <motion.div 
-          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-          className="w-full"
-        >
-          <img 
-            src="https://i.ibb.co/939Tnng3/Blue-White-Colorful-Business-Facebook-Cover-3.png" 
-            alt="Hero" 
-            className="w-full object-cover"
-          />
         </motion.div>
 
       </div>

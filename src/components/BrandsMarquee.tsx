@@ -1,5 +1,10 @@
 import { motion } from 'motion/react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export default function BrandsMarquee() {
   const brands = [
     { name: "Meta", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
@@ -10,21 +15,22 @@ export default function BrandsMarquee() {
   
   return (
     <section className="py-12 bg-white border-b border-gray-100 overflow-hidden">
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0 }}
-        className="text-center mb-8"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Worked with Amazing Brands</h2>
-      </motion.div>
+      <div className="text-center mb-8">
+        <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
+          <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            Trusted Partners
+          </span>
+        </motion.div>
+        <motion.h2 
+          initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+          className="text-3xl md:text-4xl font-bold mb-4"
+        >
+          <span className="text-text-dark">Worked with Amazing</span> <span className="text-gray-400">Brands</span>
+        </motion.h2>
+      </div>
       
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+        initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
         className="relative"
       >
         {/* Gradient Masks */}
