@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Rocket, Twitter, Facebook, Mail } from 'lucide-react';
+import { Rocket } from 'lucide-react';
 import { useState } from 'react';
 
 const fadeUp = {
@@ -160,11 +160,6 @@ export default function Footer() {
             <a href="#results" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Results</a>
             <a href="#why-us" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Why Us</a>
             <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">FAQ</a>
-          </div>
-          <div className="flex items-center justify-center gap-6">
-            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Twitter className="w-5 h-5 fill-current border-none" /></a>
-            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Facebook className="w-5 h-5 fill-current border-none" /></a>
-            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Mail className="w-5 h-5 fill-current border-none" /></a>
           </div>
         </motion.div>
 
