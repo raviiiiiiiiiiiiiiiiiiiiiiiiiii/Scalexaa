@@ -1,6 +1,11 @@
 import { motion } from 'motion/react';
 import { Binoculars, Crown, Check, X as XIcon } from 'lucide-react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export default function Comparison() {
   const others = [
     "Vanity metrics over real ROI",
@@ -23,27 +28,25 @@ export default function Comparison() {
     <section id="why-us" className="py-20 md:py-24 bg-white px-4">
       <div className="max-w-5xl mx-auto">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
             <span className="text-text-dark">Why</span> <span className="text-primary">Scalexa?</span>
-          </h2>
-          <p className="text-lg text-text-dark font-medium">
+          </motion.h2>
+          <motion.p 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-lg text-text-dark font-medium"
+          >
             What makes Scalexa different from every other Meta Ads agency?
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
             className="flex-1 bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
           >
             <div className="mb-8">
@@ -61,10 +64,7 @@ export default function Comparison() {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
             className="flex-1 bg-bg-pale rounded-3xl p-8"
           >
             <div className="mb-8">

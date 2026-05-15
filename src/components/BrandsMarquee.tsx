@@ -13,7 +13,8 @@ export default function BrandsMarquee() {
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0 }}
         className="text-center mb-8"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Worked with Amazing Brands</h2>
@@ -22,8 +23,8 @@ export default function BrandsMarquee() {
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
         className="relative"
       >
         {/* Gradient Masks */}

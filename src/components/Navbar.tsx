@@ -19,9 +19,13 @@ export default function Navbar() {
             <a href="#results" className="text-sm font-medium text-text-dark hover:text-primary transition-colors">Results</a>
             <a href="#why-us" className="text-sm font-medium text-text-dark hover:text-primary transition-colors">Why Us</a>
             <a href="#faq" className="text-sm font-medium text-text-dark hover:text-primary transition-colors">FAQ</a>
-            <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm">
+            <motion.a 
+              whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+              href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
+              className="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm"
+            >
               Book a Call
-            </a>
+            </motion.a>
           </div>
 
           <div className="md:hidden flex items-center">

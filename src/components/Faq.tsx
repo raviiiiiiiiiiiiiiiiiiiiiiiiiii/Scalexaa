@@ -2,6 +2,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 const faqs = [
   {
     q: "How soon will I see results?",
@@ -28,28 +33,26 @@ export default function Faq() {
     <section id="faq" className="py-20 md:py-24 bg-white px-4">
       <div className="max-w-3xl mx-auto">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-            Need Help?
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold">
+        <div className="text-center mb-12">
+          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
+            <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              Need Help?
+            </span>
+          </motion.div>
+          <motion.h2 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-4xl md:text-5xl font-bold"
+          >
             <span className="text-text-dark">Frequently asked</span> <br className="md:hidden" />
             <span className="text-gray-400">question</span>
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </div>
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+            <motion.div
+              initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
               key={i} 
               className={`rounded-2xl transition-colors duration-200 ${openIndex === i ? 'bg-gray-50' : 'bg-gray-50 hover:bg-gray-100'} cursor-pointer overflow-hidden`}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}

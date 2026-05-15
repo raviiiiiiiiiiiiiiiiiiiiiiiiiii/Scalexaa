@@ -2,6 +2,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export default function Results() {
   const shopifyImages = [
     "https://i.ibb.co/PsSvs5wH/IMG-20260515-081024.jpg",
@@ -43,29 +48,30 @@ export default function Results() {
     <section id="results" className="py-20 md:py-24 bg-bg-pale px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block bg-blue-100 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-            Scalexa Delivers
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
+            <span className="inline-block bg-blue-100 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              Scalexa Delivers
+            </span>
+          </motion.div>
+          <motion.h2 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
             <span className="text-text-dark">Real Results from</span> <span className="text-primary">Real Campaigns</span>
-          </h2>
-          <p className="text-lg text-text-dark font-medium">
+          </motion.h2>
+          <motion.p 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-lg text-text-dark font-medium"
+          >
             Short, actionable proof that we deliver ROI — not just impressions.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         <div className="w-full space-y-12">
           {/* Shopify Dashboard Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.div 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
             className="w-full"
           >
             <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
@@ -83,21 +89,23 @@ export default function Results() {
                   className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
                 />
                 
-                <button 
-                  onClick={(e) => { e.stopPropagation(); prevShopify(); }}
+                <motion.button 
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); prevShopify(); }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
-                </button>
+                </motion.button>
                 
-                <button 
-                  onClick={(e) => { e.stopPropagation(); nextShopify(); }}
+                <motion.button 
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); nextShopify(); }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
-                </button>
+                </motion.button>
               </div>
               
               <div className="flex justify-center gap-2">
@@ -114,10 +122,8 @@ export default function Results() {
           </motion.div>
 
           {/* Meta Ads Dashboard Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.div 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
             className="w-full"
           >
             <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
@@ -135,21 +141,23 @@ export default function Results() {
                   className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
                 />
                 
-                <button 
-                  onClick={(e) => { e.stopPropagation(); prevMeta(); }}
+                <motion.button 
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); prevMeta(); }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
-                </button>
+                </motion.button>
                 
-                <button 
-                  onClick={(e) => { e.stopPropagation(); nextMeta(); }}
+                <motion.button 
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); nextMeta(); }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
-                </button>
+                </motion.button>
               </div>
               
               <div className="flex justify-center gap-2 flex-wrap max-w-xs mx-auto">

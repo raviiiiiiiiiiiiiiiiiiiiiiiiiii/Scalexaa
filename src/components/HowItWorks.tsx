@@ -1,6 +1,11 @@
 import { motion } from 'motion/react';
 import { ClipboardList, Pointer, Play, Star } from 'lucide-react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 const steps = [
   {
     icon: <ClipboardList className="w-6 h-6 text-teal-700" />,
@@ -45,31 +50,32 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20 md:py-24 bg-white px-4 overflow-hidden">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-            Simple Process
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
+            <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              Simple Process
+            </span>
+          </motion.div>
+          <motion.h2 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
             <span className="text-text-dark">How it</span> <span className="text-gray-400">works</span>
-          </h2>
-          <p className="text-lg text-text-dark font-medium">
+          </motion.h2>
+          <motion.p 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-lg text-text-dark font-medium"
+          >
             From first call to profitable scaling — we make it seamless.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         <div className="w-full flex flex-col gap-4">
           {steps.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
+              initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
               className={`p-6 rounded-2xl w-full md:w-3/4 flex gap-4 ${step.bgColor} ${step.align}`}
             >
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${step.iconBg}`}>

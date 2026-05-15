@@ -1,6 +1,11 @@
 import { motion } from 'motion/react';
 import { Rocket } from 'lucide-react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 const services = [
   {
     title: "Meta Ads Campaign Strategy",
@@ -38,25 +43,21 @@ export default function Services() {
   return (
     <section id="services" className="py-20 md:py-24 bg-white px-4">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-text-dark flex items-center justify-center gap-2">
+        <div className="text-center mb-12">
+          <motion.h2 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            className="text-3xl md:text-5xl font-bold text-text-dark flex items-center justify-center gap-2"
+          >
             Services That Deliver. Results That Pay <Rocket className="w-8 h-8 text-red-500" />
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </div>
 
         <div className="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x">
           {services.map((service, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
               className="min-w-[320px] md:min-w-[380px] bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col snap-start overflow-hidden hover:shadow-md transition-shadow"
             >
               <div className="h-56 w-full relative overflow-hidden bg-gray-50 flex-shrink-0">
@@ -69,9 +70,15 @@ export default function Services() {
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-text-dark mb-2">{service.title}</h3>
                 <p className="text-text-muted mb-6 flex-grow">{service.desc}</p>
-                <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="w-max bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors inline-block text-center">
-                  Get Started
-                </a>
+                <div>
+                  <motion.a 
+                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                    href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
+                    className="w-max bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium inline-block text-center"
+                  >
+                    Get Started
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -1,15 +1,18 @@
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export default function Hero() {
   return (
     <section className="pt-24 pb-16 md:pt-40 md:pb-24 px-4 bg-white overflow-hidden flex flex-col items-center text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
           className="text-3xl md:text-7xl font-bold tracking-tight text-text-dark leading-[1.1] mb-4 md:mb-6"
         >
           Scaling Brands <br />
@@ -17,61 +20,63 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
           className="text-sm md:text-xl text-text-dark mb-8 md:mb-10 max-w-2xl font-medium px-4"
         >
           High-Performance Campaigns. Data-Driven Decisions. Profitable Growth.
         </motion.p>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
           className="flex flex-row justify-center gap-3 mb-10 md:mb-12"
         >
-          <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-all shadow-md hover:shadow-lg inline-block">
+          <motion.a 
+            whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+            href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
+            className="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-colors shadow-md inline-block"
+          >
             Book a Call
-          </a>
-          <a href="#results" className="bg-gray-50 hover:bg-gray-100 text-text-dark border border-gray-200 px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-medium transition-all inline-block">
+          </motion.a>
+          <motion.a 
+            whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+            href="#results" 
+            className="bg-gray-50 hover:bg-gray-100 text-text-dark border border-gray-200 px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-medium transition-colors inline-block"
+          >
             See Our Work
-          </a>
+          </motion.a>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col items-center"
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col md:flex-row items-center justify-center gap-2 mb-4 md:mb-3"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 mb-4 md:mb-3">
-            <div className="flex gap-1 text-primary">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
-              ))}
-            </div>
-            <p className="text-xs md:text-sm font-medium text-text-dark">
-               Trusted by 50+ e-commerce brands
-            </p>
-          </div>
-          <div className="flex -space-x-2 md:-space-x-3 mb-12 md:mb-16">
-             {[...Array(5)].map((_, i) => (
-              <img 
-                key={i} 
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover bg-gray-200"
-                src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i}&backgroundColor=e2e8f0`}
-                alt="Client avatar"
-              />
+          <div className="flex gap-1 text-primary">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star key={star} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
             ))}
           </div>
+          <p className="text-xs md:text-sm font-medium text-text-dark">
+             Trusted by 50+ e-commerce brands
+          </p>
         </motion.div>
 
-        <motion.div
-           initial={{ opacity: 0, y: 40 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.7, delay: 0.5 }}
-           className="w-full"
+        <motion.div 
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+          className="flex -space-x-2 md:-space-x-3 mb-12 md:mb-16"
+        >
+           {[...Array(5)].map((_, i) => (
+            <img 
+              key={i} 
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover bg-gray-200"
+              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i}&backgroundColor=e2e8f0`}
+              alt="Client avatar"
+            />
+          ))}
+        </motion.div>
+
+        <motion.div 
+          initial="hidden" animate="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+          className="w-full"
         >
           <img 
             src="https://i.ibb.co/939Tnng3/Blue-White-Colorful-Business-Facebook-Cover-3.png" 
@@ -84,3 +89,4 @@ export default function Hero() {
     </section>
   );
 }
+

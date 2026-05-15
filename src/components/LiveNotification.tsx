@@ -2,6 +2,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export default function LiveNotification() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,9 +31,10 @@ export default function LiveNotification() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.9 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={fadeUp}
           className="fixed bottom-6 left-6 z-50 bg-white p-4 rounded-xl shadow-xl flex items-start gap-4 max-w-sm border border-gray-100"
         >
           <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 overflow-hidden">
