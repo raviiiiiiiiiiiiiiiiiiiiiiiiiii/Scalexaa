@@ -5,9 +5,6 @@ export default function BrandsMarquee() {
     { name: "Meta", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
     { name: "Shopify", src: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" },
     { name: "Google", src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-    { name: "WooCommerce", src: "https://upload.wikimedia.org/wikipedia/commons/2/2a/WooCommerce_logo.svg" },
-    { name: "Razorpay", src: "https://razorpay.com/assets/razorpay-glyph.svg" },
-    { name: "Cashfree", src: "https://upload.wikimedia.org/wikipedia/commons/archive/8/80/20230811165011%21Cashfree_Logo.svg" },
     { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.png" }
   ];
   
