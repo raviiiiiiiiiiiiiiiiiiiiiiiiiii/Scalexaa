@@ -6,7 +6,12 @@ export default function Footer() {
     <footer className="bg-[#111827] text-white pt-20 pb-8 px-4 border-t border-gray-800">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <div className="flex items-center justify-center mb-8">
             <img src="https://i.ibb.co/PzvNxqqp/IMG-20260515-073359.png" alt="Scalexa Logo" className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-50" />
           </div>
@@ -31,9 +36,14 @@ export default function Footer() {
               📱 +91-8200306143
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm max-w-3xl border-t border-gray-800 pt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm max-w-3xl border-t border-gray-800 pt-12"
+        >
           <div className="space-y-4">
             <a href="#" className="hidden md:block text-gray-400 hover:text-white transition-colors">Learn Marketing online with Scalexa.</a>
             <div className="flex items-center gap-6 mt-4">
@@ -54,7 +64,7 @@ export default function Footer() {
             <a href="#" className="block text-gray-400 hover:text-white transition-colors">Contact</a>
             <a href="#" className="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
           </div>
-        </div>
+        </motion.div>
 
         <div className="w-full text-center text-xs text-gray-500 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
            <p>© 2026 Scalexa. All rights reserved.</p>

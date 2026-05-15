@@ -31,28 +31,28 @@ export default function Recognition() {
         {/* Mosaic Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
              src={images[0]} className="w-full h-48 md:h-64 object-cover rounded-2xl" 
            />
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
              src={images[1]} className="w-full h-48 md:h-64 object-cover rounded-2xl col-span-2 md:col-span-1" 
            />
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
              src={images[2]} className="w-full h-48 md:h-64 object-cover rounded-2xl col-span-2 md:col-span-1" 
            />
            
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
              src={images[3]} className="w-full h-48 md:h-64 object-cover rounded-2xl col-span-2 md:col-span-1" 
            />
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
              src={images[4]} className="w-full h-48 md:h-64 object-cover rounded-2xl hidden md:block" 
            />
            <motion.img 
-             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
              src={images[5]} className="w-full h-48 md:h-64 object-cover rounded-2xl col-span-2 md:col-span-1" 
            />
         </div>

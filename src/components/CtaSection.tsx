@@ -5,8 +5,8 @@ export default function CtaSection() {
     <section className="py-20 md:py-24 bg-bg-pale px-4 text-center">
       <div className="max-w-3xl mx-auto">
         <motion.div
-           initial={{ opacity: 0, scale: 0.95 }}
-           whileInView={{ opacity: 1, scale: 1 }}
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text-dark mb-6 tracking-tight">

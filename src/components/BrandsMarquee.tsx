@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 export default function BrandsMarquee() {
   const brands = [
     "Shopify", "Meta", "Google", "WooCommerce", "Razorpay", "Cashfree", "Adobe", "AiSensy"
@@ -5,11 +7,22 @@ export default function BrandsMarquee() {
   
   return (
     <section className="py-12 bg-white border-b border-gray-100 overflow-hidden">
-      <div className="text-center mb-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-8"
+      >
         <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Worked with Amazing Brands</h2>
-      </div>
+      </motion.div>
       
-      <div className="relative">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="relative"
+      >
         {/* Gradient Masks */}
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
@@ -30,7 +43,7 @@ export default function BrandsMarquee() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

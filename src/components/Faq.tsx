@@ -45,7 +45,11 @@ export default function Faq() {
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div 
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
               key={i} 
               className={`rounded-2xl transition-colors duration-200 ${openIndex === i ? 'bg-gray-50' : 'bg-gray-50 hover:bg-gray-100'} cursor-pointer overflow-hidden`}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -70,7 +74,7 @@ export default function Faq() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           ))}
         </div>
 

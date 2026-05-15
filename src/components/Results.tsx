@@ -1,6 +1,25 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react';
 
 export default function Results() {
+  const shopifyImages = [
+    "https://i.ibb.co/PsSvs5wH/IMG-20260515-081024.jpg",
+    "https://i.ibb.co/x8JJYtbx/IMG-20260515-081044.jpg",
+    "https://i.ibb.co/dsfMtZsj/IMG-20260515-081101.jpg",
+    "https://i.ibb.co/nq1nMkfn/IMG-20260515-081116.jpg"
+  ];
+  
+  const [currentShopify, setCurrentShopify] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const nextShopify = () => { setCurrentShopify((prev) => (prev + 1) % shopifyImages.length); setZoomLevel(1); };
+  const prevShopify = () => { setCurrentShopify((prev) => (prev - 1 + shopifyImages.length) % shopifyImages.length); setZoomLevel(1); };
+
+  const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.5, 3));
+  const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
+
   return (
     <section className="py-20 md:py-24 bg-bg-pale px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
@@ -28,40 +47,50 @@ export default function Results() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm text-center"
+            className="w-full"
           >
-            <h3 className="text-3xl font-bold text-text-dark mb-4">Shopify Dashboard Overview</h3>
-            <p className="text-text-muted mb-10 max-w-2xl mx-auto">
-              These brands grew from zero with our strategy, optimization, and consistent execution.
-            </p>
-            
-            <div className="bg-primary rounded-[2rem] p-4 md:p-8">
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 relative pt-12 pb-4 px-4 bg-gray-50">
-                <div className="absolute top-0 left-0 w-full h-10 bg-gray-100 flex items-center px-4 gap-2">
-                   <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                   <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                   <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                {/* Mock Shopify Graph */}
-                <div className="w-full h-64 bg-white rounded flex items-center justify-center p-4">
-                  <div className="w-full h-full relative">
-                    <div className="flex justify-between items-end h-full gap-2 opacity-20">
-                      {[10, 20, 15, 30, 40, 25, 50, 60, 45, 70, 80, 60, 90].map((v, i) => (
-                        <div key={i} className="w-full bg-primary rounded-t" style={{ height: `${v}%` }}></div>
-                      ))}
-                    </div>
-                    <div className="absolute inset-0 flex flex-col justify-between py-2 border-l border-b border-gray-200"></div>
-                    <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                      <path d="M0,80 Q10,70 20,80 T40,60 T60,50 T80,30 T100,10" fill="none" stroke="#2563EB" strokeWidth="2" />
-                      <circle cx="100" cy="10" r="2" fill="#2563EB" />
-                    </svg>
-                  </div>
-                </div>
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-text-dark mb-2">Shopify Dashboard Overview</h3>
+              <p className="text-sm md:text-base text-text-muted mb-8 max-w-2xl mx-auto">
+                These brands grew from zero with our strategy, optimization, and consistent execution.
+              </p>
+              
+              {/* Shopify Results Carousel */}
+              <div className="w-full relative bg-gray-50 rounded-xl overflow-hidden mb-6 aspect-video flex items-center justify-center group">
+                <img 
+                  src={shopifyImages[currentShopify]} 
+                  alt={`Shopify Result ${currentShopify + 1}`}
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
+                />
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); prevShopify(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); nextShopify(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
-            </div>
-            <div className="flex justify-center gap-2 mt-6">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+              
+              <div className="flex justify-center gap-2">
+                {shopifyImages.map((_, i) => (
+                  <button 
+                    key={i}
+                    onClick={() => setCurrentShopify(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${currentShopify === i ? 'bg-primary' : 'bg-gray-200 hover:bg-gray-300'}`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -70,61 +99,110 @@ export default function Results() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm text-center"
+            className="w-full"
           >
-            <h3 className="text-3xl font-bold text-text-dark mb-4">Meta Ads Dashboard Overview</h3>
-            <p className="text-text-muted mb-10 max-w-2xl mx-auto">
-              These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI.
-            </p>
-            
-            <div className="bg-primary rounded-[2rem] p-4 md:p-8">
-               <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 flex flex-col">
-                 <div className="border-b border-gray-100 p-4 font-mono text-sm font-bold bg-gray-50 flex items-center gap-4">
-                    <span>Performance</span>
-                    <span className="text-primary border-b-2 border-primary pb-1">Customize Columns</span>
-                 </div>
-                 {/* Mock Meta Table */}
-                 <div className="w-full overflow-x-auto">
-                   <table className="w-full text-left text-xs whitespace-nowrap">
-                     <thead className="bg-gray-50 border-b border-gray-100">
-                       <tr>
-                         <th className="p-3 font-medium">Campaign Name</th>
-                         <th className="p-3 font-medium">Results</th>
-                         <th className="p-3 font-medium">Reach</th>
-                         <th className="p-3 font-medium">Cost per result</th>
-                         <th className="p-3 font-medium">Amount spent</th>
-                         <th className="p-3 font-medium text-green-600">Purchases ROAS</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                       {[
-                         { name: "Conv_D2C_Scaling_Broad", res: "342", reach: "124,500", cpr: "₹142.50", spent: "₹48,735", roas: "12.4x" },
-                         { name: "Retargeting_Hot_30D", res: "128", reach: "15,200", cpr: "₹85.20", spent: "₹10,905", roas: "18.2x" },
-                         { name: "Adv+_Shopping_Scale", res: "512", reach: "245,100", cpr: "₹165.10", spent: "₹84,531", roas: "9.8x" },
-                         { name: "Test_New_Creatives_V3", res: "45", reach: "32,450", cpr: "₹210.00", spent: "₹9,450", roas: "6.5x" },
-                       ].map((row, i) => (
-                         <tr key={i} className="border-b border-gray-50">
-                           <td className="p-3 font-medium">{row.name}</td>
-                           <td className="p-3 text-text-muted">{row.res}</td>
-                           <td className="p-3 text-text-muted">{row.reach}</td>
-                           <td className="p-3 text-text-muted">{row.cpr}</td>
-                           <td className="p-3 text-text-muted">{row.spent}</td>
-                           <td className="p-3 font-bold text-green-600">{row.roas}</td>
-                         </tr>
-                       ))}
-                     </tbody>
-                   </table>
-                 </div>
-               </div>
-            </div>
-            <div className="flex justify-center gap-2 mt-6">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-text-dark mb-2">Meta Ads Dashboard Overview</h3>
+              <p className="text-sm md:text-base text-text-muted mb-8 max-w-2xl mx-auto">
+                These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI.
+              </p>
+              
+              {/* Mock Meta Table */}
+              <div className="w-full overflow-x-auto mb-6 bg-white border border-gray-100 rounded-xl">
+                <table className="w-full text-left text-sm whitespace-nowrap">
+                  <thead className="bg-gray-50 border-b border-gray-100">
+                    <tr>
+                      <th className="p-4 text-sm font-semibold text-gray-500">Campaign Name</th>
+                      <th className="p-4 text-sm font-semibold text-gray-500">Results</th>
+                      <th className="p-4 text-sm font-semibold text-gray-500">Reach</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { name: "Conv_D2C_Scaling_Broad", res: "342", reach: "124,500" },
+                      { name: "Retargeting_Hot_30D", res: "128", reach: "15,200" },
+                      { name: "Adv+_Shopping_Scale", res: "512", reach: "245,100" },
+                      { name: "Test_New_Creatives_V3", res: "45", reach: "32,450" },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
+                        <td className="p-4 font-medium text-text-dark">{row.name}</td>
+                        <td className="p-4 text-text-muted">{row.res}</td>
+                        <td className="p-4 text-text-muted">{row.reach}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="flex justify-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+              </div>
             </div>
           </motion.div>
 
         </div>
       </div>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 touch-none overflow-hidden"
+          >
+            <button 
+              onClick={() => { setIsModalOpen(false); setZoomLevel(1); }}
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-colors z-[110]"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white z-[110] border border-white/20">
+              <button onClick={handleZoomOut} disabled={zoomLevel <= 1} className="p-2 hover:bg-white/20 rounded-full disabled:opacity-50 transition-colors">
+                <ZoomOut className="w-5 h-5" />
+              </button>
+              <span className="text-sm font-medium w-12 text-center" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                {Math.round(zoomLevel * 100)}%
+              </span>
+              <button onClick={handleZoomIn} disabled={zoomLevel >= 3} className="p-2 hover:bg-white/20 rounded-full disabled:opacity-50 transition-colors">
+                <ZoomIn className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="w-full h-full overflow-hidden flex items-center justify-center p-4">
+               <motion.img 
+                  drag={zoomLevel > 1}
+                  dragConstraints={{ left: -400, right: 400, top: -400, bottom: 400 }}
+                  dragElastic={0.1}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: zoomLevel, opacity: 1 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                  src={shopifyImages[currentShopify]} 
+                  alt="Enlarged result" 
+                  className={`max-w-[95vw] max-h-[95vh] md:max-w-[85vw] md:max-h-[85vh] object-contain origin-center ${zoomLevel > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
+               />
+            </div>
+            
+            {/* Modal Controls */}
+            <button 
+              onClick={(e) => { e.stopPropagation(); prevShopify(); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
+            >
+              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+            </button>
+            
+            <button 
+              onClick={(e) => { e.stopPropagation(); nextShopify(); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
+            >
+              <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
