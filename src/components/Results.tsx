@@ -40,7 +40,7 @@ export default function Results() {
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
 
   return (
-    <section className="py-20 md:py-24 bg-bg-pale px-4">
+    <section id="results" className="py-20 md:py-24 bg-bg-pale px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         <motion.div 

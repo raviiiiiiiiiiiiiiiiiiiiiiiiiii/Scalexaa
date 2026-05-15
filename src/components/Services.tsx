@@ -69,9 +69,9 @@ export default function Services() {
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-text-dark mb-2">{service.title}</h3>
                 <p className="text-text-muted mb-6 flex-grow">{service.desc}</p>
-                <button className="w-max bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors">
+                <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="w-max bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors inline-block text-center">
                   Get Started
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}

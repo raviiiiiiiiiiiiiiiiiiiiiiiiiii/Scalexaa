@@ -1,40 +1,131 @@
 import { motion } from 'motion/react';
 import { Rocket, Twitter, Facebook, Mail } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Footer() {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('submitting');
+    const data = new FormData(e.currentTarget);
+    const jsonData = Object.fromEntries(data.entries());
+
+    try {
+      // Replace YOUR_FORM_ID with Formspree form ID after creating free account at formspree.io
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
+  };
+
   return (
-    <footer className="bg-[#111827] text-white pt-20 pb-8 px-4 border-t border-gray-800">
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+    <footer id="contact" className="bg-white text-gray-500 pt-20 pb-8 px-4 border-t border-gray-100">
+      <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 w-full"
         >
           <div className="flex items-center justify-center mb-8">
-            <img src="https://i.ibb.co/PzvNxqqp/IMG-20260515-073359.png" alt="Scalexa Logo" className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-50" />
+            <img src="https://i.ibb.co/PzvNxqqp/IMG-20260515-073359.png" alt="Scalexa Logo" className="h-10 md:h-12 w-auto object-contain opacity-80" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Let's Grow Your Brand</span> <span className="text-gray-400">Together</span>
+          <span className="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            Get In Touch
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 text-center">
+             Let's Grow Your Brand Together
           </h2>
-          <p className="text-lg text-gray-300 mb-10 max-w-xl mx-auto px-4">
-            Book a free 3-day ad trial and witness real results before committing.
+          <p className="text-lg text-gray-500 mb-10 max-w-xl mx-auto px-4">
+            Fill in your details and we'll get back to you within 24 hours.
           </p>
-          
-          <button className="bg-accent hover:bg-[#86c02a] text-[#0F172A] px-10 py-4 rounded-full text-lg font-bold transition-colors inline-block shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_30px_rgba(163,230,53,0.4)] mb-8">
-            Book a Free Call
-          </button>
-          
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm font-medium text-gray-300">
-            <a href="mailto:scalexa07@gmail.com" className="hover:text-white transition-colors">
-              📧 scalexa07@gmail.com
+
+          <div className="max-w-2xl mx-auto mb-16 text-left">
+            {status === 'success' ? (
+              <div className="bg-green-50 text-green-800 p-8 rounded-2xl border border-green-200 text-center">
+                <h3 className="text-xl font-bold mb-2">Thanks!</h3>
+                <p>We'll reach out within 24 hours.</p>
+              </div>
+            ) : status === 'error' ? (
+              <div className="bg-red-50 text-red-800 p-8 rounded-2xl border border-red-200 text-center">
+                <h3 className="text-xl font-bold mb-2">Something went wrong.</h3>
+                <p>Please <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="underline font-bold">WhatsApp us</a> directly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-gray-50 p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-900 mb-2">Name</label>
+                    <input required type="text" name="name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-900" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-900 mb-2">Email</label>
+                    <input required type="email" name="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-900" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-900 mb-2">Phone</label>
+                    <input required type="tel" name="phone" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-900" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-900 mb-2">Brand / Business Name</label>
+                    <input required type="text" name="brand" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-900" />
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">Monthly Ad Budget</label>
+                  <select name="budget" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-900">
+                    <option value="">Select your budget</option>
+                    <option value="Under ₹10k">Under ₹10k</option>
+                    <option value="₹10k–₹30k">₹10k–₹30k</option>
+                    <option value="₹30k–₹1L">₹30k–₹1L</option>
+                    <option value="Above ₹1L">Above ₹1L</option>
+                  </select>
+                </div>
+
+                <div className="mb-8">
+                  <label className="block text-sm font-medium text-gray-900 mb-2">Message (Optional)</label>
+                  <textarea name="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none bg-white text-gray-900"></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  disabled={status === 'submitting'}
+                  className="w-full bg-primary hover:bg-blue-700 text-white font-medium py-4 px-6 rounded-xl transition-colors disabled:opacity-70"
+                >
+                  {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                </button>
+              </form>
+            )}
+          </div>
+
+          <div className="text-center">
+            <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="bg-accent hover:bg-[#86c02a] text-gray-900 px-10 py-4 rounded-full text-lg font-bold transition-colors inline-block shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_30px_rgba(163,230,53,0.4)] mb-8">
+              Book a Free Call
             </a>
-            <span className="hidden md:inline text-gray-600">|</span>
-            <a href="https://wa.me/918200306143" className="hover:text-white transition-colors">
-              📱 +91-8200306143
-            </a>
+            
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm font-medium text-gray-600">
+              <a href="mailto:scalexa07@gmail.com" className="hover:text-blue-600 transition-colors">
+                📧 scalexa07@gmail.com
+              </a>
+              <span className="hidden md:inline text-gray-300">|</span>
+              <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+                📱 +91-8200306143
+              </a>
+            </div>
           </div>
         </motion.div>
 
@@ -42,37 +133,24 @@ export default function Footer() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="w-full grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm max-w-3xl border-t border-gray-800 pt-12"
+          className="w-full max-w-3xl border-t border-gray-100 pt-12 pb-8"
         >
-          <div className="space-y-4">
-            <a href="#" className="hidden md:block text-gray-400 hover:text-white transition-colors">Learn Marketing online with Scalexa.</a>
-            <div className="flex items-center gap-6 mt-4">
-               <a href="#" className="text-white hover:text-gray-300"><Twitter className="w-5 h-5 fill-current" /></a>
-               <a href="#" className="text-white hover:text-gray-300"><Facebook className="w-5 h-5 fill-current" /></a>
-               <a href="#" className="text-white hover:text-gray-300"><Mail className="w-5 h-5 fill-current" /></a>
-            </div>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-8 text-sm md:text-base">
+            <a href="#services" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Services</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">How It Works</a>
+            <a href="#results" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Results</a>
+            <a href="#why-us" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Why Us</a>
+            <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">FAQ</a>
           </div>
-          <div className="space-y-4">
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">Services</a>
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">How it Works</a>
-          </div>
-          <div className="space-y-4">
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">Results</a>
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">Founders</a>
-          </div>
-          <div className="space-y-4">
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">Contact</a>
-            <a href="#" className="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+          <div className="flex items-center justify-center gap-6">
+            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Twitter className="w-5 h-5 fill-current border-none" /></a>
+            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Facebook className="w-5 h-5 fill-current border-none" /></a>
+            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors"><Mail className="w-5 h-5 fill-current border-none" /></a>
           </div>
         </motion.div>
 
-        <div className="w-full text-center text-xs text-gray-500 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="w-full text-center text-xs text-gray-400 border-t border-gray-100 pt-8 flex flex-col justify-center items-center gap-2">
            <p>© 2026 Scalexa. All rights reserved.</p>
-           <div className="flex gap-4">
-             <a href="#" className="hover:text-white">FAQs</a>
-             <a href="#" className="hover:text-white">Contact us</a>
-             <a href="#" className="hover:text-white">Refund policy</a>
-           </div>
         </div>
 
       </div>

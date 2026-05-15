@@ -9,10 +9,7 @@ import BrandsMarquee from './components/BrandsMarquee';
 import Services from './components/Services';
 import HowItWorks from './components/HowItWorks';
 import Results from './components/Results';
-import Recognition from './components/Recognition';
-import Testimonials from './components/Testimonials';
 import Comparison from './components/Comparison';
-import Founder from './components/Founder';
 import CtaSection from './components/CtaSection';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
@@ -27,10 +24,7 @@ export default function App() {
       <Services />
       <HowItWorks />
       <Results />
-      <Recognition />
-      <Testimonials />
       <Comparison />
-      <Founder />
       <CtaSection />
       <Faq />
       <Footer />

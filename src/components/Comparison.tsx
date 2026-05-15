@@ -20,7 +20,7 @@ export default function Comparison() {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-white px-4">
+    <section id="why-us" className="py-20 md:py-24 bg-white px-4">
       <div className="max-w-5xl mx-auto">
         
         <motion.div 

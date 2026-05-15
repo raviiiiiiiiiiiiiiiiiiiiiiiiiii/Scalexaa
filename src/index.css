@@ -53,3 +53,7 @@ body {
   background-color: var(--color-bg-light);
   overflow-x: hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}

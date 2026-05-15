@@ -31,12 +31,12 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-row justify-center gap-3 mb-10 md:mb-12"
         >
-          <button className="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-all shadow-md hover:shadow-lg">
+          <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-all shadow-md hover:shadow-lg inline-block">
             Book a Call
-          </button>
-          <button className="bg-gray-50 hover:bg-gray-100 text-text-dark border border-gray-200 px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-medium transition-all">
+          </a>
+          <a href="#results" className="bg-gray-50 hover:bg-gray-100 text-text-dark border border-gray-200 px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-medium transition-all inline-block">
             See Our Work
-          </button>
+          </a>
         </motion.div>
 
         <motion.div 
@@ -71,12 +71,12 @@ export default function Hero() {
            initial={{ opacity: 0, y: 40 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.7, delay: 0.5 }}
-           className="w-full max-w-5xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl bg-gray-50 border border-gray-100"
+           className="w-full"
         >
           <img 
-            src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Team placeholder" 
-            className="w-full h-auto max-h-64 md:max-h-none object-cover opacity-90 grayscale-[20%]"
+            src="https://i.ibb.co/939Tnng3/Blue-White-Colorful-Business-Facebook-Cover-3.png" 
+            alt="Hero" 
+            className="w-full object-cover"
           />
         </motion.div>
 

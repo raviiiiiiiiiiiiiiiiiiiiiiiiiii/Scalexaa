@@ -16,9 +16,9 @@ export default function CtaSection() {
             Witness real results before committing. No credit card. No risk.
           </p>
           
-          <button className="bg-primary hover:bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 mb-8">
+          <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 mb-8 inline-block">
             Start My Free Trial
-          </button>
+          </a>
           
           <p className="text-sm font-medium text-text-dark max-w-md mx-auto">
             Trusted by e-commerce brands. Performance-focused campaigns delivering real ROI.
