@@ -78,51 +78,37 @@ export default function Results() {
         <div className="w-full space-y-12">
           {/* Shopify Dashboard Card */}
           <motion.div 
-            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.1 }}
             className="w-full"
           >
-            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
-              <h3 className="text-xl md:text-2xl font-bold text-text-dark mb-2">Shopify Dashboard Overview</h3>
-              <p className="text-sm md:text-base text-text-muted mb-8 max-w-2xl mx-auto">
-                These brands grew from zero with our strategy, optimization, and consistent execution.
-              </p>
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Shopify Dashboard Overview</h3>
               
-              {/* Shopify Results Carousel */}
-              <div className="w-full relative bg-gray-50 rounded-xl overflow-hidden mb-6 aspect-video flex items-center justify-center group">
-                <img 
-                  src={shopifyImages[currentShopify]} 
-                  alt={`Shopify Result ${currentShopify + 1}`}
-                  onClick={() => setModalView('shopify')}
-                  className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
-                />
-                
-                <motion.button 
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); prevShopify(); }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </motion.button>
-                
-                <motion.button 
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); nextShopify(); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </motion.button>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {shopifyImages.slice(0, 4).map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentShopify(i); setModalView('shopify'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Shopify Result ${i + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
               </div>
               
-              <div className="flex justify-center gap-2">
-                {shopifyImages.map((_, i) => (
-                  <button 
-                    key={i}
-                    onClick={() => setCurrentShopify(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${currentShopify === i ? 'bg-primary' : 'bg-gray-200 hover:bg-gray-300'}`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                "These brands grew from zero with our strategy, optimization, and consistent execution."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {shopifyImages.slice(4, 8).map((img, i) => (
+                  <div 
+                    key={i + 4} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentShopify(i + 4); setModalView('shopify'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Shopify Result ${i + 5}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
                 ))}
               </div>
             </div>
@@ -130,53 +116,59 @@ export default function Results() {
 
           {/* Meta Ads Dashboard Card */}
           <motion.div 
-            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.1 }}
             className="w-full"
           >
-            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-center mx-auto">
-              <h3 className="text-xl md:text-2xl font-bold text-text-dark mb-2">Meta Ads Dashboard Overview</h3>
-              <p className="text-sm md:text-base text-text-muted mb-8 max-w-2xl mx-auto">
-                These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI.
-              </p>
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Meta Ads Dashboard Overview</h3>
               
-              {/* Meta Results Carousel */}
-              <div className="w-full relative bg-gray-50 rounded-xl overflow-hidden mb-6 aspect-video flex items-center justify-center group">
-                <img 
-                  src={metaImages[currentMeta]} 
-                  alt={`Meta Result ${currentMeta + 1}`}
-                  onClick={() => setModalView('meta')}
-                  className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
-                />
-                
-                <motion.button 
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); prevMeta(); }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </motion.button>
-                
-                <motion.button 
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); nextMeta(); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </motion.button>
-              </div>
-              
-              <div className="flex justify-center gap-2 flex-wrap max-w-xs mx-auto">
-                {metaImages.map((_, i) => (
-                  <button 
-                    key={i}
-                    onClick={() => setCurrentMeta(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${currentMeta === i ? 'bg-primary' : 'bg-gray-200 hover:bg-gray-300'}`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(0, 6).map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
                 ))}
               </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                "These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI for e-commerce brands."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(6, 12).map((img, i) => (
+                  <div 
+                    key={i + 6} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i + 6); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 7}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                "Each campaign is backed by in-depth analysis and strategic adjustments to maximize ad performance and minimize wasted spend."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(12, 15).map((img, i) => (
+                  <div 
+                    key={i + 12} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i + 12); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 13}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic max-w-3xl mx-auto font-medium">
+                "Delivering consistent Meta Ads performance with expert audience research, precise optimization, and proven scaling strategies."
+              </p>
             </div>
           </motion.div>
 
