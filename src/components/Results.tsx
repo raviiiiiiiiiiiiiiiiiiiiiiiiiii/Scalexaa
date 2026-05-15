@@ -20,18 +20,21 @@ export default function Results() {
   ];
 
   const metaImages = [
-    "https://i.ibb.co/ch0TwMg9/Whats-App-Image-2025-12-11-at-1-27-32-PM-2.jpg",
-    "https://i.ibb.co/8ggTmNR5/Whats-App-Image-2025-12-09-at-10-00-05-PM.jpg",
-    "https://i.ibb.co/0pHb9ZrX/Whats-App-Image-2025-12-09-at-10-00-06-PM-1.jpg",
-    "https://i.ibb.co/RGXfMJ9F/Whats-App-Image-2025-12-09-at-10-00-06-PM.jpg",
-    "https://i.ibb.co/NMPmsMd/Whats-App-Image-2025-12-09-at-10-00-10-PM-1.jpg",
-    "https://i.ibb.co/8ncCDNTf/Whats-App-Image-2025-12-09-at-10-00-07-PM.jpg",
-    "https://i.ibb.co/zhYdBSdh/Whats-App-Image-2025-12-09-at-10-00-09-PM-2.jpg",
-    "https://i.ibb.co/V0ZYpGMG/Whats-App-Image-2025-12-09-at-10-00-10-PM.jpg",
-    "https://i.ibb.co/3mczTxJS/Whats-App-Image-2025-12-09-at-10-00-09-PM.jpg",
-    "https://i.ibb.co/Pvb6TTDH/Whats-App-Image-2025-12-09-at-10-00-09-PM-1.jpg",
-    "https://i.ibb.co/9kNMrLDD/Whats-App-Image-2025-12-09-at-10-00-08-PM.jpg",
-    "https://i.ibb.co/dsyqsQZt/Whats-App-Image-2025-12-09-at-10-00-08-PM-1.jpg"
+    "https://i.ibb.co/xqWSRKjL/Screenshot-2025-11-09-133245.png",
+    "https://i.ibb.co/bggC4Fdd/Screenshot-2025-11-09-131542.png",
+    "https://i.ibb.co/k2m5sbcW/Screenshot-2025-11-09-131516.png",
+    "https://i.ibb.co/D3YJk1t/Screenshot-2025-11-05-203658.png",
+    "https://i.ibb.co/7tzjwBXF/Screenshot-2025-11-04-151024.png",
+    "https://i.ibb.co/B5SG9CZ5/Screenshot-2025-11-04-151002.png",
+    "https://i.ibb.co/XfVJ1HD1/Screenshot-2025-11-02-223105.png",
+    "https://i.ibb.co/qLN511zb/Screenshot-2025-11-01-230549.png",
+    "https://i.ibb.co/tP11mBQs/Screenshot-2025-11-01-230518.png",
+    "https://i.ibb.co/SD5ggFz1/Screenshot-2025-10-27-124154.png",
+    "https://i.ibb.co/vCRybKvr/Screenshot-2025-11-01-230529.png",
+    "https://i.ibb.co/hF4f6Nrd/Screenshot-2025-12-11-131315.png",
+    "https://i.ibb.co/8gwh3Xp2/Screenshot-2025-12-23-220257.png",
+    "https://i.ibb.co/MyXQXLHP/Screenshot-2025-12-23-220206.png",
+    "https://i.ibb.co/r2QxVTPp/Screenshot-2026-05-14-133325.png"
   ];
   
   const [currentShopify, setCurrentShopify] = useState(0);
