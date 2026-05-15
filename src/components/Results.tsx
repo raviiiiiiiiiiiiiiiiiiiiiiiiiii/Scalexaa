@@ -9,13 +9,32 @@ export default function Results() {
     "https://i.ibb.co/dsfMtZsj/IMG-20260515-081101.jpg",
     "https://i.ibb.co/nq1nMkfn/IMG-20260515-081116.jpg"
   ];
+
+  const metaImages = [
+    "https://i.ibb.co/ch0TwMg9/Whats-App-Image-2025-12-11-at-1-27-32-PM-2.jpg",
+    "https://i.ibb.co/8ggTmNR5/Whats-App-Image-2025-12-09-at-10-00-05-PM.jpg",
+    "https://i.ibb.co/0pHb9ZrX/Whats-App-Image-2025-12-09-at-10-00-06-PM-1.jpg",
+    "https://i.ibb.co/RGXfMJ9F/Whats-App-Image-2025-12-09-at-10-00-06-PM.jpg",
+    "https://i.ibb.co/NMPmsMd/Whats-App-Image-2025-12-09-at-10-00-10-PM-1.jpg",
+    "https://i.ibb.co/8ncCDNTf/Whats-App-Image-2025-12-09-at-10-00-07-PM.jpg",
+    "https://i.ibb.co/zhYdBSdh/Whats-App-Image-2025-12-09-at-10-00-09-PM-2.jpg",
+    "https://i.ibb.co/V0ZYpGMG/Whats-App-Image-2025-12-09-at-10-00-10-PM.jpg",
+    "https://i.ibb.co/3mczTxJS/Whats-App-Image-2025-12-09-at-10-00-09-PM.jpg",
+    "https://i.ibb.co/Pvb6TTDH/Whats-App-Image-2025-12-09-at-10-00-09-PM-1.jpg",
+    "https://i.ibb.co/9kNMrLDD/Whats-App-Image-2025-12-09-at-10-00-08-PM.jpg",
+    "https://i.ibb.co/dsyqsQZt/Whats-App-Image-2025-12-09-at-10-00-08-PM-1.jpg"
+  ];
   
   const [currentShopify, setCurrentShopify] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentMeta, setCurrentMeta] = useState(0);
+  const [modalView, setModalView] = useState<'shopify' | 'meta' | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
   const nextShopify = () => { setCurrentShopify((prev) => (prev + 1) % shopifyImages.length); setZoomLevel(1); };
   const prevShopify = () => { setCurrentShopify((prev) => (prev - 1 + shopifyImages.length) % shopifyImages.length); setZoomLevel(1); };
+
+  const nextMeta = () => { setCurrentMeta((prev) => (prev + 1) % metaImages.length); setZoomLevel(1); };
+  const prevMeta = () => { setCurrentMeta((prev) => (prev - 1 + metaImages.length) % metaImages.length); setZoomLevel(1); };
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.5, 3));
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
@@ -60,7 +79,7 @@ export default function Results() {
                 <img 
                   src={shopifyImages[currentShopify]} 
                   alt={`Shopify Result ${currentShopify + 1}`}
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => setModalView('shopify')}
                   className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
                 />
                 
@@ -107,36 +126,41 @@ export default function Results() {
                 These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI.
               </p>
               
-              {/* Mock Meta Table */}
-              <div className="w-full overflow-x-auto mb-6 bg-white border border-gray-100 rounded-xl">
-                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-gray-50 border-b border-gray-100">
-                    <tr>
-                      <th className="p-4 text-sm font-semibold text-gray-500">Campaign Name</th>
-                      <th className="p-4 text-sm font-semibold text-gray-500">Results</th>
-                      <th className="p-4 text-sm font-semibold text-gray-500">Reach</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { name: "Conv_D2C_Scaling_Broad", res: "342", reach: "124,500" },
-                      { name: "Retargeting_Hot_30D", res: "128", reach: "15,200" },
-                      { name: "Adv+_Shopping_Scale", res: "512", reach: "245,100" },
-                      { name: "Test_New_Creatives_V3", res: "45", reach: "32,450" },
-                    ].map((row, i) => (
-                      <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
-                        <td className="p-4 font-medium text-text-dark">{row.name}</td>
-                        <td className="p-4 text-text-muted">{row.res}</td>
-                        <td className="p-4 text-text-muted">{row.reach}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Meta Results Carousel */}
+              <div className="w-full relative bg-gray-50 rounded-xl overflow-hidden mb-6 aspect-video flex items-center justify-center group">
+                <img 
+                  src={metaImages[currentMeta]} 
+                  alt={`Meta Result ${currentMeta + 1}`}
+                  onClick={() => setModalView('meta')}
+                  className="w-full h-full object-contain mix-blend-multiply cursor-zoom-in"
+                />
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); prevMeta(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); nextMeta(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/90 hover:bg-white text-text-dark rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
               
-              <div className="flex justify-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+              <div className="flex justify-center gap-2 flex-wrap max-w-xs mx-auto">
+                {metaImages.map((_, i) => (
+                  <button 
+                    key={i}
+                    onClick={() => setCurrentMeta(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${currentMeta === i ? 'bg-primary' : 'bg-gray-200 hover:bg-gray-300'}`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>
@@ -146,7 +170,7 @@ export default function Results() {
 
       {/* Image Modal */}
       <AnimatePresence>
-        {isModalOpen && (
+        {modalView && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -154,7 +178,7 @@ export default function Results() {
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 touch-none overflow-hidden"
           >
             <button 
-              onClick={() => { setIsModalOpen(false); setZoomLevel(1); }}
+              onClick={() => { setModalView(null); setZoomLevel(1); }}
               className="absolute top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-colors z-[110]"
             >
               <X className="w-6 h-6" />
@@ -180,7 +204,7 @@ export default function Results() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: zoomLevel, opacity: 1 }}
                   transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                  src={shopifyImages[currentShopify]} 
+                  src={modalView === 'shopify' ? shopifyImages[currentShopify] : metaImages[currentMeta]} 
                   alt="Enlarged result" 
                   className={`max-w-[95vw] max-h-[95vh] md:max-w-[85vw] md:max-h-[85vh] object-contain origin-center ${zoomLevel > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
                />
@@ -188,14 +212,14 @@ export default function Results() {
             
             {/* Modal Controls */}
             <button 
-              onClick={(e) => { e.stopPropagation(); prevShopify(); }}
+              onClick={(e) => { e.stopPropagation(); modalView === 'shopify' ? prevShopify() : prevMeta(); }}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
             >
               <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
             </button>
             
             <button 
-              onClick={(e) => { e.stopPropagation(); nextShopify(); }}
+              onClick={(e) => { e.stopPropagation(); modalView === 'shopify' ? nextShopify() : nextMeta(); }}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
             >
               <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
