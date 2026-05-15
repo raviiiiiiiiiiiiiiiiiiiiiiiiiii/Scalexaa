@@ -97,10 +97,10 @@ export default function Results() {
               </div>
               
               <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
-                "These brands grew from zero with our strategy, optimization, and consistent execution."
+                ☝🏻 "These brands grew from zero with our strategy, optimization, and consistent execution."
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 {shopifyImages.slice(4, 8).map((img, i) => (
                   <div 
                     key={i + 4} 
@@ -111,6 +111,10 @@ export default function Results() {
                   </div>
                 ))}
               </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                 ☝🏻 "Scaling e-commerce brands efficiently through meticulous tracking and store optimization."
+              </p>
             </div>
           </motion.div>
 
@@ -123,7 +127,7 @@ export default function Results() {
               <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Meta Ads Dashboard Overview</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(0, 6).map((img, i) => (
+                {metaImages.slice(0, 4).map((img, i) => (
                   <div 
                     key={i} 
                     className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
@@ -135,23 +139,39 @@ export default function Results() {
               </div>
 
               <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
-                "These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI for e-commerce brands."
+                ☝🏻 "These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver measurable ROI for e-commerce brands."
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(6, 12).map((img, i) => (
+                {metaImages.slice(4, 8).map((img, i) => (
                   <div 
-                    key={i + 6} 
+                    key={i + 4} 
                     className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
-                    onClick={() => { setCurrentMeta(i + 6); setModalView('meta'); setZoomLevel(1); }}
+                    onClick={() => { setCurrentMeta(i + 4); setModalView('meta'); setZoomLevel(1); }}
                   >
-                    <img src={img} alt={`Meta Result ${i + 7}`} className="w-full h-full object-contain mix-blend-multiply" />
+                    <img src={img} alt={`Meta Result ${i + 5}`} className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                 ))}
               </div>
 
               <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
-                "Each campaign is backed by in-depth analysis and strategic adjustments to maximize ad performance and minimize wasted spend."
+                ☝🏻 "Each campaign is backed by in-depth analysis and strategic adjustments to maximize ad performance and minimize wasted spend."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(8, 12).map((img, i) => (
+                  <div 
+                    key={i + 8} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i + 8); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 9}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "Delivering consistent Meta Ads performance with expert audience research, precise optimization, and proven scaling strategies."
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -166,8 +186,8 @@ export default function Results() {
                 ))}
               </div>
 
-              <p className="text-center text-lg md:text-xl text-text-muted italic max-w-3xl mx-auto font-medium">
-                "Delivering consistent Meta Ads performance with expert audience research, precise optimization, and proven scaling strategies."
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "Constant testing of new creatives and audiences ensures our campaigns remain highly profitable at scale."
               </p>
             </div>
           </motion.div>
