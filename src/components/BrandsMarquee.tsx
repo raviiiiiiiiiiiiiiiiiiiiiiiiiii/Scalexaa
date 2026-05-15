@@ -7,10 +7,13 @@ const fadeUp = {
 
 export default function BrandsMarquee() {
   const brands = [
-    { name: "Meta", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
-    { name: "Shopify", src: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" },
-    { name: "Google", src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-    { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.png" }
+    { name: "Brand 1", src: "https://i.ibb.co/gM8vXKj3/1000056915-removebg-preview.png" },
+    { name: "Brand 2", src: "https://i.ibb.co/Q3Tc7cjf/1000056913-removebg-preview.png" },
+    { name: "Brand 3", src: "https://i.ibb.co/DfynYTh5/1000056912-removebg-preview.png" },
+    { name: "Brand 4", src: "https://i.ibb.co/99TT9YvS/1000056911-removebg-preview.png" },
+    { name: "Brand 5", src: "https://i.ibb.co/Q7cQX0VC/1000056916-removebg-preview.png" },
+    { name: "Brand 6", src: "https://i.ibb.co/TMZvbYLK/1000056910-removebg-preview.png" },
+    { name: "Brand 7", src: "https://i.ibb.co/SDHMs8V7/1000056909-removebg-preview.png" }
   ];
   
   return (
@@ -43,14 +46,14 @@ export default function BrandsMarquee() {
             className="flex items-center"
             style={{ animation: 'marquee 20s linear infinite' }}
           >
-            <div className="flex items-center gap-12 pr-12 shrink-0">
+            <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0">
               {brands.map((brand, i) => (
-                <img key={`b1-${i}`} src={brand.src} alt={brand.name} className="h-8 w-auto grayscale opacity-70 object-contain" />
+                <img key={`b1-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto grayscale opacity-70 object-contain" />
               ))}
             </div>
-            <div className="flex items-center gap-12 pr-12 shrink-0">
+            <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0">
               {brands.map((brand, i) => (
-                <img key={`b2-${i}`} src={brand.src} alt={brand.name} className="h-8 w-auto grayscale opacity-70 object-contain" />
+                <img key={`b2-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto grayscale opacity-70 object-contain" />
               ))}
             </div>
           </div>
