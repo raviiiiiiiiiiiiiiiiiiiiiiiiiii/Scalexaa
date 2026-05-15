@@ -9,10 +9,14 @@ const fadeUp = {
 
 export default function Results() {
   const shopifyImages = [
-    "https://i.ibb.co/PsSvs5wH/IMG-20260515-081024.jpg",
-    "https://i.ibb.co/x8JJYtbx/IMG-20260515-081044.jpg",
-    "https://i.ibb.co/dsfMtZsj/IMG-20260515-081101.jpg",
-    "https://i.ibb.co/nq1nMkfn/IMG-20260515-081116.jpg"
+    "https://i.ibb.co/TBchCyDz/Screenshot-2025-12-11-133038.png",
+    "https://i.ibb.co/tRsVRF1/Screenshot-2025-10-01-222454.png",
+    "https://i.ibb.co/tw98GYfT/Screenshot-2025-10-01-222833.png",
+    "https://i.ibb.co/9kkCtTRH/Screenshot-2025-10-01-222947.png",
+    "https://i.ibb.co/vxzQ47ZY/Screenshot-2025-10-01-223234.png",
+    "https://i.ibb.co/SDMJw76h/Screenshot-2025-12-11-132156.png",
+    "https://i.ibb.co/GfRzjT7L/Screenshot-2025-12-11-132225.png",
+    "https://i.ibb.co/FkBdWjng/Screenshot-2025-12-11-132322.png"
   ];
 
   const metaImages = [
