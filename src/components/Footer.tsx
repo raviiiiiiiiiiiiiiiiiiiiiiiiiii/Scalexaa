@@ -47,7 +47,7 @@ export default function Footer() {
           </motion.div>
           
           <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
-            <span className="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               Get In Touch
             </span>
           </motion.div>
@@ -118,7 +118,7 @@ export default function Footer() {
                 <button 
                   type="submit" 
                   disabled={status === 'submitting'}
-                  className="w-full bg-primary hover:bg-blue-700 text-white font-medium py-4 px-6 rounded-xl transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+                  className="w-full bg-primary hover:opacity-90 text-white font-medium py-4 px-6 rounded-xl transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
                 >
                   {status === 'submitting' ? 'Sending...' : 'Send Message'}
                 </button>
@@ -139,11 +139,11 @@ export default function Footer() {
             </motion.a>
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm font-medium text-gray-600">
-              <a href="mailto:scalexa07@gmail.com" className="hover:text-blue-600 transition-colors">
+              <a href="mailto:scalexa07@gmail.com" className="hover:text-primary transition-colors">
                 📧 scalexa07@gmail.com
               </a>
               <span className="hidden md:inline text-gray-300">|</span>
-              <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+              <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 📱 +91-8200306143
               </a>
             </div>
@@ -155,11 +155,11 @@ export default function Footer() {
           className="w-full max-w-3xl border-t border-gray-100 pt-12 pb-8"
         >
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-8 text-sm md:text-base">
-            <a href="#services" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Services</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">How It Works</a>
-            <a href="#results" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Results</a>
-            <a href="#why-us" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Why Us</a>
-            <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">FAQ</a>
+            <a href="#services" className="text-gray-600 hover:text-primary font-medium transition-colors">Services</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-primary font-medium transition-colors">How It Works</a>
+            <a href="#results" className="text-gray-600 hover:text-primary font-medium transition-colors">Results</a>
+            <a href="#why-us" className="text-gray-600 hover:text-primary font-medium transition-colors">Why Us</a>
+            <a href="#faq" className="text-gray-600 hover:text-primary font-medium transition-colors">FAQ</a>
           </div>
         </motion.div>
 

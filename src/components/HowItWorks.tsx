@@ -27,10 +27,10 @@ const steps = [
     icon: <Play className="w-6 h-6 text-white" />,
     title: "Launch & Optimize",
     desc: "Campaigns go live. We monitor, A/B test, and scale what's working.",
-    bgColor: "bg-blue-500",
-    iconBg: "bg-blue-400 bg-opacity-30",
+    bgColor: "bg-primary",
+    iconBg: "bg-primary/30",
     textColor: "text-white",
-    descColor: "text-blue-100",
+    descColor: "text-white/80",
     align: "md:ml-48",
   },
   {
@@ -52,7 +52,7 @@ export default function HowItWorks() {
         
         <div className="text-center mb-16">
           <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
-            <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               Simple Process
             </span>
           </motion.div>

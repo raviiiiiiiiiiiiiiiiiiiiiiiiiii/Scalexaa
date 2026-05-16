@@ -37,7 +37,7 @@ export default function CaseStudyDetail() {
           </Link>
           
           <div className="mb-4">
-            <span className="inline-block bg-blue-50 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+            <span className="inline-block bg-[#0199e3]/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
               {study.niche}
             </span>
           </div>
@@ -126,7 +126,7 @@ export default function CaseStudyDetail() {
             href="https://wa.me/918200306143" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center bg-primary hover:opacity-90 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             Book a Free Call
           </a>

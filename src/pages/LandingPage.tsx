@@ -8,6 +8,8 @@ import Comparison from '../components/Comparison';
 import CtaSection from '../components/CtaSection';
 import InstagramSection from '../components/InstagramSection';
 import Testimonials from '../components/Testimonials';
+import About from '../components/About';
+import Partners from '../components/Partners';
 import Faq from '../components/Faq';
 import Footer from '../components/Footer';
 
@@ -16,10 +18,12 @@ export default function LandingPage() {
     <>
       <Hero />
       <BrandsMarquee />
+      <Partners />
       <Results />
       <Services />
       <HowItWorks />
       <Comparison />
+      <About />
       <Testimonials />
       <CtaSection />
       <InstagramSection />

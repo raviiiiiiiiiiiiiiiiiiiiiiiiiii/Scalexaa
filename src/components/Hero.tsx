@@ -36,7 +36,7 @@ export default function Hero() {
           <motion.a 
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
             href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
-            className="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-colors shadow-md inline-block"
+            className="bg-primary hover:opacity-90 text-white px-5 py-2.5 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-colors shadow-md inline-block"
           >
             Book a Call
           </motion.a>

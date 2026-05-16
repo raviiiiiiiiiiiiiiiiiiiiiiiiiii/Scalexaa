@@ -20,7 +20,7 @@ export default function BrandsMarquee() {
     <section className="py-12 bg-white border-b border-gray-100 overflow-hidden">
       <div className="text-center mb-8">
         <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
-          <span className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
             Trusted Partners
           </span>
         </motion.div>
@@ -48,12 +48,12 @@ export default function BrandsMarquee() {
           >
             <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0">
               {brands.map((brand, i) => (
-                <img key={`b1-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto grayscale opacity-70 object-contain" />
+                <img key={`b1-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto object-contain" />
               ))}
             </div>
             <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0">
               {brands.map((brand, i) => (
-                <img key={`b2-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto grayscale opacity-70 object-contain" />
+                <img key={`b2-${i}`} src={brand.src} alt={brand.name} className="h-16 md:h-24 w-auto object-contain" />
               ))}
             </div>
           </div>

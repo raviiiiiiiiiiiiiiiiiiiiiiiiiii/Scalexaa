@@ -31,7 +31,7 @@ export default function CtaSection() {
           <motion.a 
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
             href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
-            className="bg-primary hover:bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-medium shadow-md inline-block"
+            className="bg-primary hover:opacity-90 text-white px-10 py-4 rounded-full text-lg font-medium shadow-md inline-block"
           >
             Start My Free Trial
           </motion.a>
