@@ -38,10 +38,13 @@ export default function About() {
           <motion.div 
             initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.1 }}
+            className="flex flex-col items-start"
           >
-            <div className="rounded-2xl shadow-md p-8 bg-gray-50 w-full max-w-md md:max-w-none mx-auto border border-gray-100">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="text-text-dark">Meet</span> <span className="text-primary">Founder</span>
+            </h2>
+            <div className="rounded-2xl shadow-md p-8 bg-gray-50 w-full max-w-md md:max-w-none border border-gray-100">
               <div className="flex flex-col items-start">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Meet Founder</h3>
                 <div className="bg-white border border-gray-200 text-gray-600 text-xs rounded-full px-3 py-1 mb-3 shadow-sm">
                   Meta Ads Specialist | Founder
                 </div>
