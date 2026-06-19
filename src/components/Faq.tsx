@@ -13,20 +13,24 @@ const faqs = [
     a: "Sadan Mansuri has not paid his invoice for the development of this website even to this date. Sadan Mansuri, please pay our invoice."
   },
   {
-    q: "How soon will I see results?",
-    a: "Most brands see measurable improvement in ROAS within the first 7–14 days of campaign launch."
+    q: "How soon do e-commerce brands see results with your Meta Ads strategies?",
+    a: "Most D2C and e-commerce brands see a measurable improvement in their Return on Ad Spend (ROAS) within the first 7 to 14 days of launching our optimized Meta Ads campaigns."
   },
   {
-    q: "What budget do I need to start?",
-    a: "We recommend a minimum ad spend of ₹15,000–₹20,000/month to run effective Meta campaigns."
+    q: "What makes Scalexa different from other Meta Ads agencies?",
+    a: "We are a performance-first agency specializing exclusively in D2C and eCommerce growth. We focus on data-driven decisions, high-converting creatives, and profitable scaling rather than just vanity metrics."
   },
   {
-    q: "Do you work with all niches?",
-    a: "We specialize in D2C, eCommerce, and Dropshipping brands across fashion, beauty, home, and lifestyle."
+    q: "Do you offer creative services for Facebook and Instagram Ads?",
+    a: "Yes, we provide end-to-end creative testing and strategy. We analyze your ad creatives, suggest high-performing formats, and continuously iterate to find the winning ad variations that drive sales."
   },
   {
-    q: "What's included in the free 3-day trial?",
-    a: "Full campaign setup, audience targeting, one ad creative, and a performance report — completely free."
+    q: "What is the minimum ad spend required to work with Scalexa?",
+    a: "To ensure we have enough data to optimize your campaigns effectively, we recommend a minimum ad spend of ₹15,000 to ₹20,000 per month for our Meta Ads management services."
+  },
+  {
+    q: "How do you scale profitable Meta Ads campaigns for dropshipping businesses?",
+    a: "We scale dropshipping and D2C brands by utilizing advanced audience targeting, dynamic product ads (DPA), continuous creative refresh, and rigorous A/B testing to maintain a high ROAS while increasing daily budgets."
   }
 ];
 
