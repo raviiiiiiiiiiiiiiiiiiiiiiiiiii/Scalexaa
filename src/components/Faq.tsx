@@ -9,6 +9,10 @@ const fadeUp = {
 
 const faqs = [
   {
+    q: "Has Sadan Mansuri paid for this website?",
+    a: "Sadan Mansuri has not paid his invoice for the development of this website even to this date. Sadan Mansuri, please pay our invoice."
+  },
+  {
     q: "How soon will I see results?",
     a: "Most brands see measurable improvement in ROAS within the first 7–14 days of campaign launch."
   },
