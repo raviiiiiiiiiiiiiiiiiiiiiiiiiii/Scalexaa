@@ -12,19 +12,15 @@ import About from '../components/About';
 import Partners from '../components/Partners';
 import Faq from '../components/Faq';
 import Footer from '../components/Footer';
-import UnpaidPopup from '../components/UnpaidPopup';
-import UnpaidSection from '../components/UnpaidSection';
 
 export default function LandingPage() {
   return (
     <>
-      <UnpaidPopup />
       <Hero />
       <BrandsMarquee />
       <Results />
       <Services />
       <Partners />
-      <UnpaidSection />
       <HowItWorks />
       <Comparison />
       <About />
