@@ -7,11 +7,6 @@ const fadeIn = {
   visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-const fadeCard = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.4, ease: "easeOut" } }
-};
-
 export default function Hero() {
   return (
     <section 
@@ -88,50 +83,6 @@ export default function Hero() {
             ))}
           </div>
           <span>Trusted by 50+ e-commerce brands</span>
-        </motion.div>
-
-        {/* Visual Proof Card */}
-        <motion.div 
-          initial="hidden" animate="visible" variants={fadeCard}
-          className="rounded-2xl border border-gray-100 shadow-lg bg-white p-5 mt-16 max-w-sm w-full mx-2 md:mx-auto"
-        >
-          {/* Top Bar */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="flex gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
-            </div>
-            <span className="text-gray-400 text-xs font-medium ml-1">Meta Ads Manager</span>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col border border-gray-50 rounded-xl p-3 bg-white">
-              <span className="text-gray-400 text-xs font-semibold mb-1">ROAS</span>
-              <span className="text-2xl font-black text-primary">8.4x</span>
-            </div>
-            <div className="flex flex-col border border-gray-50 rounded-xl p-3 bg-white">
-              <span className="text-gray-400 text-xs font-semibold mb-1">Revenue</span>
-              <span className="text-2xl font-black text-primary">₹14.2L</span>
-            </div>
-            <div className="flex flex-col border border-gray-50 rounded-xl p-3 bg-white">
-              <span className="text-gray-400 text-xs font-semibold mb-1">CPR</span>
-              <span className="text-2xl font-black text-primary">₹220</span>
-            </div>
-            <div className="flex flex-col border border-gray-50 rounded-xl p-3 bg-white">
-              <span className="text-gray-400 text-xs font-semibold mb-1">Orders</span>
-              <span className="text-2xl font-black text-primary">552</span>
-            </div>
-          </div>
-
-          {/* Bottom Pill */}
-          <div className="mt-4">
-            <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-600 text-xs font-medium rounded-full px-3 py-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-              Live Campaign Running
-            </span>
-          </div>
         </motion.div>
       </div>
     </section>
