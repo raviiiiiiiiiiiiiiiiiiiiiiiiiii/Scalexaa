@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Rocket } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },

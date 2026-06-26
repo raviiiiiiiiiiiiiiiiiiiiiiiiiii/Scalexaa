@@ -1,15 +1,46 @@
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [prevScrollY, setPrevScrollY] = useState(0);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // If the mobile menu drawer is open, keep the navbar visible
+      if (isOpen) {
+        setHidden(false);
+        setPrevScrollY(currentScrollY);
+        return;
+      }
+
+      // Scroll threshold check for mobile screens (width < 768px)
+      if (window.innerWidth < 768) {
+        if (currentScrollY > prevScrollY && currentScrollY > 80) {
+          setHidden(true);
+        } else {
+          setHidden(false);
+        }
+      } else {
+        setHidden(false); // Always visible on desktop
+      }
+      
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollY, isOpen]);
+
   return (
-    <nav className="fixed w-full z-50 bg-white border-b border-gray-100/50 backdrop-blur-md">
+    <nav className={`fixed w-full z-50 bg-white border-b border-gray-100/50 backdrop-blur-md transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-2">

@@ -125,6 +125,72 @@ export default function Results() {
           >
             <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Meta Ads Dashboard Overview</h3>
+
+              {/* Master Meta Ads Manager Performance Card */}
+              <div className="max-w-xl mx-auto mb-12 bg-gray-50/50 border border-gray-100 rounded-2xl p-6 shadow-sm">
+                {/* Window header */}
+                <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1.5">
+                      <span className="w-3 h-3 rounded-full bg-rose-400 block"></span>
+                      <span className="w-3 h-3 rounded-full bg-amber-400 block"></span>
+                      <span className="w-3 h-3 rounded-full bg-emerald-400 block"></span>
+                    </div>
+                    <span className="text-xs font-semibold text-text-muted ml-1 tracking-wider uppercase font-mono">Meta Ads Manager</span>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-600 text-[10px] uppercase font-mono tracking-wider font-bold px-2.5 py-1 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    Live Campaign Running
+                  </span>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:border-primary/20 transition-all">
+                    <span className="text-xs font-medium text-text-muted uppercase tracking-wider block mb-1">ROAS</span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">8.4x</span>
+                      <span className="text-green-500 text-xs font-semibold">↑ Active</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:border-primary/20 transition-all">
+                    <span className="text-xs font-medium text-text-muted uppercase tracking-wider block mb-1">Revenue</span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">₹14.2L</span>
+                      <span className="text-green-500 text-xs font-semibold">Scaled</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:border-primary/20 transition-all">
+                    <span className="text-xs font-medium text-text-muted uppercase tracking-wider block mb-1">CPR</span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">₹220</span>
+                      <span className="text-emerald-600 text-xs font-semibold">Optimized</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:border-primary/20 transition-all">
+                    <span className="text-xs font-medium text-text-muted uppercase tracking-wider block mb-1">Orders</span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">552</span>
+                      <span className="text-green-500 text-xs font-semibold">Shipped</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footnote / Proof description */}
+                <div className="mt-5 pt-4 border-t border-gray-100 flex items-start gap-2.5">
+                  <div className="w-7 h-7 bg-primary/5 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                  </div>
+                  <p className="text-xs md:text-sm text-text-muted leading-relaxed font-medium">
+                    This performance summary demonstrates Scalexa's elite funnel architecture: maintaining high conversion rates with optimized CPA/CPR, leading to consistent profitability on scaling budgets.
+                  </p>
+                </div>
+              </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 {metaImages.slice(0, 4).map((img, i) => (
