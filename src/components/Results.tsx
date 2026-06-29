@@ -20,6 +20,13 @@ export default function Results() {
   ];
 
   const metaImages = [
+    "https://i.ibb.co/m5Zvj00s/Screenshot-2026-06-20-143901.png",
+    "https://i.ibb.co/HTqJfjhX/Screenshot-2026-06-20-143732.png",
+    "https://i.ibb.co/0jbjFHKS/Screenshot-2026-06-20-143602.png",
+    "https://i.ibb.co/4ZqYJZbQ/Screenshot-2026-06-20-143710.png",
+    "https://i.ibb.co/fYYJpb38/Screenshot-2026-06-20-134406.png",
+    "https://i.ibb.co/4nk6HS1V/Screenshot-2026-06-20-134513.png",
+    "https://i.ibb.co/YFstFXPf/Screenshot-2026-06-20-134340.png",
     "https://i.ibb.co/xqWSRKjL/Screenshot-2025-11-09-133245.png",
     "https://i.ibb.co/bggC4Fdd/Screenshot-2025-11-09-131542.png",
     "https://i.ibb.co/k2m5sbcW/Screenshot-2025-11-09-131516.png",
@@ -127,13 +134,29 @@ export default function Results() {
               <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Meta Ads Dashboard Overview</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(0, 4).map((img, i) => (
+                {metaImages.slice(0, 7).map((img, i) => (
                   <div 
                     key={i} 
-                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    className={`w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow ${i === 6 ? 'md:col-span-2 max-w-xl mx-auto' : ''}`}
                     onClick={() => { setCurrentMeta(i); setModalView('meta'); setZoomLevel(1); }}
                   >
                     <img src={img} alt={`Meta Result ${i + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "Latest high-performing Meta Ads campaigns demonstrating outstanding ROAS and rapid scaling."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(7, 11).map((img, i) => (
+                  <div 
+                    key={i + 7} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i + 7); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 8}`} className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                 ))}
               </div>
@@ -143,13 +166,13 @@ export default function Results() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(4, 8).map((img, i) => (
+                {metaImages.slice(11, 15).map((img, i) => (
                   <div 
-                    key={i + 4} 
+                    key={i + 11} 
                     className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
-                    onClick={() => { setCurrentMeta(i + 4); setModalView('meta'); setZoomLevel(1); }}
+                    onClick={() => { setCurrentMeta(i + 11); setModalView('meta'); setZoomLevel(1); }}
                   >
-                    <img src={img} alt={`Meta Result ${i + 5}`} className="w-full h-full object-contain mix-blend-multiply" />
+                    <img src={img} alt={`Meta Result ${i + 12}`} className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                 ))}
               </div>
@@ -159,13 +182,13 @@ export default function Results() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(8, 12).map((img, i) => (
+                {metaImages.slice(15, 19).map((img, i) => (
                   <div 
-                    key={i + 8} 
+                    key={i + 15} 
                     className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
-                    onClick={() => { setCurrentMeta(i + 8); setModalView('meta'); setZoomLevel(1); }}
+                    onClick={() => { setCurrentMeta(i + 15); setModalView('meta'); setZoomLevel(1); }}
                   >
-                    <img src={img} alt={`Meta Result ${i + 9}`} className="w-full h-full object-contain mix-blend-multiply" />
+                    <img src={img} alt={`Meta Result ${i + 16}`} className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                 ))}
               </div>
@@ -175,13 +198,13 @@ export default function Results() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {metaImages.slice(12, 15).map((img, i) => (
+                {metaImages.slice(19, 22).map((img, i) => (
                   <div 
-                    key={i + 12} 
+                    key={i + 19} 
                     className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
-                    onClick={() => { setCurrentMeta(i + 12); setModalView('meta'); setZoomLevel(1); }}
+                    onClick={() => { setCurrentMeta(i + 19); setModalView('meta'); setZoomLevel(1); }}
                   >
-                    <img src={img} alt={`Meta Result ${i + 13}`} className="w-full h-full object-contain mix-blend-multiply" />
+                    <img src={img} alt={`Meta Result ${i + 20}`} className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                 ))}
               </div>
