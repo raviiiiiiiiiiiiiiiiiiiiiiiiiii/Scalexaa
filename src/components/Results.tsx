@@ -10,10 +10,6 @@ const fadeUp = {
 export default function Results() {
   const shopifyImages = [
     "https://i.ibb.co/TBchCyDz/Screenshot-2025-12-11-133038.png",
-    "https://i.ibb.co/tRsVRF1/Screenshot-2025-10-01-222454.png",
-    "https://i.ibb.co/tw98GYfT/Screenshot-2025-10-01-222833.png",
-    "https://i.ibb.co/9kkCtTRH/Screenshot-2025-10-01-222947.png",
-    "https://i.ibb.co/vxzQ47ZY/Screenshot-2025-10-01-223234.png",
     "https://i.ibb.co/SDMJw76h/Screenshot-2025-12-11-132156.png",
     "https://i.ibb.co/GfRzjT7L/Screenshot-2025-12-11-132225.png",
     "https://i.ibb.co/FkBdWjng/Screenshot-2025-12-11-132322.png"
@@ -105,22 +101,6 @@ export default function Results() {
               
               <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
                 ☝🏻 "These brands grew from zero with our strategy, optimization, and consistent execution."
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {shopifyImages.slice(4, 8).map((img, i) => (
-                  <div 
-                    key={i + 4} 
-                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
-                    onClick={() => { setCurrentShopify(i + 4); setModalView('shopify'); setZoomLevel(1); }}
-                  >
-                    <img src={img} alt={`Shopify Result ${i + 5}`} className="w-full h-full object-contain mix-blend-multiply" />
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
-                 ☝🏻 "Scaling e-commerce brands efficiently through meticulous tracking and store optimization."
               </p>
             </div>
           </motion.div>
