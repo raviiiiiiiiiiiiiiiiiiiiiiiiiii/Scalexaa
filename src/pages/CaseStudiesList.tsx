@@ -42,9 +42,6 @@ export default function CaseStudiesList() {
               className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col"
             >
               <div className="mb-6">
-                <span className="inline-block bg-gray-50 text-gray-500 px-3 py-1 rounded-full text-xs font-semibold mb-3 tracking-wide mt-1">
-                  {study.niche}
-                </span>
                 <h2 className="text-2xl font-bold text-text-dark">{study.brand}</h2>
               </div>
               
@@ -56,7 +53,7 @@ export default function CaseStudiesList() {
                   </div>
                 ))}
               </div>
-
+              
               <div className="mt-auto">
                 <Link 
                   to={`/case-studies/${study.slug}`}

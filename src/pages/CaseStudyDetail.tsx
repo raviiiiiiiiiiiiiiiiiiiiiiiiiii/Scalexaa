@@ -1,19 +1,12 @@
-import { motion, AnimatePresence } from 'motion/react';
 import { useParams, Link } from 'react-router-dom';
 import { caseStudies } from '../data/casestudies';
-import { ArrowLeft, ExternalLink, X } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import Footer from '../components/Footer';
-import { useState, useEffect } from 'react';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
+import { useEffect } from 'react';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
   const study = caseStudies.find(s => s.slug === slug);
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,149 +14,130 @@ export default function CaseStudyDetail() {
 
   if (!study) {
     return (
-      <div className="min-h-screen pt-32 text-center">
-        <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
-        <Link to="/case-studies" className="text-primary hover:underline">Back to Case Studies</Link>
+      <div className="min-h-screen pt-32 text-center bg-white px-4">
+        <h1 className="text-3xl font-bold mb-4 text-text-dark">Case Study Not Found</h1>
+        <Link to="/case-studies" className="text-primary hover:underline font-medium inline-flex items-center">
+          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Case Studies
+        </Link>
       </div>
     );
   }
 
+  const totalProofs = study.metaImages.length + study.shopifyImages.length;
+
   return (
-    <div className="bg-white min-h-screen flex flex-col pt-20">
-      <div className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} className="mb-10">
-          <Link to="/case-studies" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Case Studies
-          </Link>
-          
-          <div className="mb-4">
-            <span className="inline-block bg-[#0199e3]/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+    <div className="bg-white min-h-screen flex flex-col pt-24">
+      <div className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+        {/* Back Button */}
+        <Link 
+          to="/case-studies" 
+          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-8 group"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Case Studies
+        </Link>
+
+        {/* Header Block */}
+        <div className="border-b border-gray-100 pb-8 mb-10">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
               {study.niche}
             </span>
+            {study.websiteUrl && (
+              <span className="inline-block bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-xs font-medium">
+                Active Brand
+              </span>
+            )}
           </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-text-dark mb-4">{study.brand}</h1>
-          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-dark tracking-tight mb-4">
+            {study.brand}
+          </h1>
           {study.websiteUrl && (
             <a 
               href={study.websiteUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center text-sm text-gray-500 hover:text-primary transition-colors"
+              className="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-primary transition-colors hover:underline"
             >
-              Visit Website <ExternalLink className="w-3 h-3 ml-1" />
+              Visit Website <ExternalLink className="w-3.5 h-3.5 ml-1" />
             </a>
           )}
-        </motion.div>
+        </div>
 
-        {/* Results Bar */}
-        <motion.div 
-          initial="hidden" animate="visible" variants={fadeUp}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-        >
-          {study.results.map((result, i) => (
-            <div key={i} className="bg-gray-50 border border-gray-100 rounded-2xl p-5 shadow-sm">
-              <p className="text-primary font-bold text-2xl md:text-3xl leading-none mb-2">{result.value}</p>
-              <p className="text-gray-500 text-sm font-medium">{result.label}</p>
-            </div>
-          ))}
-        </motion.div>
+        {/* Stats Grid - Unified, Clean, Responsive with no empty columns */}
+        <div className="mb-12">
+          <h2 className="text-lg font-bold text-text-dark mb-4">Campaign Results</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {study.results.map((res, i) => (
+              <div key={i} className="bg-gray-50 border border-gray-100 rounded-xl p-4 md:p-6 text-center shadow-sm">
+                <p className="text-2xl md:text-3xl font-bold text-primary mb-1">{res.value}</p>
+                <p className="text-xs md:text-sm text-gray-500 font-medium">{res.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        {/* Content */}
-        <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }} className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">The Challenge</h2>
-          <p className="text-gray-600 text-lg leading-relaxed">{study.challenge}</p>
-        </motion.div>
+        {/* Narrative Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+            <h2 className="text-xl font-bold text-text-dark mb-4">The Challenge</h2>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed whitespace-pre-line">
+              {study.challenge}
+            </p>
+          </div>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+            <h2 className="text-xl font-bold text-text-dark mb-4">Our Strategy</h2>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed whitespace-pre-line">
+              {study.strategy}
+            </p>
+          </div>
+        </div>
 
-        <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }} className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">Our Strategy</h2>
-          <p className="text-gray-600 text-lg leading-relaxed">{study.strategy}</p>
-        </motion.div>
-
-        {/* Images */}
-        {study.metaImages.length > 0 && (
-          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }} className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-6">Meta Ads Dashboard</h2>
-            <div className="space-y-6">
-              {study.metaImages.map((src, i) => (
-                <div 
-                  key={i} 
-                  className="rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow"
-                  onClick={() => setFullscreenImage(src)}
-                >
-                  <img src={src} alt={`Meta Ads Result ${i + 1}`} className="w-full object-contain" />
+        {/* Verified Campaign Screenshots - Centered perfectly if only one proof exists */}
+        {totalProofs > 0 && (
+          <div className="mb-12">
+            <h2 className="text-lg font-bold text-text-dark mb-4">Campaign Proof</h2>
+            <div className={`grid gap-6 ${
+              totalProofs > 1 
+                ? 'grid-cols-1 md:grid-cols-2' 
+                : 'grid-cols-1 max-w-2xl mx-auto'
+            }`}>
+              {study.metaImages.map((img, i) => (
+                <div key={`meta-${i}`} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Meta Ads Dashboard Proof</h3>
+                  <div className="bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center border border-gray-50/50 p-2">
+                    <img src={img} alt="Meta Ads Proof" className="w-full h-auto max-h-[500px] object-contain rounded-lg shadow-sm" />
+                  </div>
+                </div>
+              ))}
+              {study.shopifyImages.map((img, i) => (
+                <div key={`shopify-${i}`} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Shopify Dashboard Proof</h3>
+                  <div className="bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center border border-gray-50/50 p-2">
+                    <img src={img} alt="Shopify Proof" className="w-full h-auto max-h-[500px] object-contain rounded-lg shadow-sm" />
+                  </div>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
 
-        {study.shopifyImages.length > 0 && (
-          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }} className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-6">Shopify Dashboard</h2>
-            <div className="space-y-6">
-              {study.shopifyImages.map((src, i) => (
-                <div 
-                  key={i} 
-                  className="rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow"
-                  onClick={() => setFullscreenImage(src)}
-                >
-                  <img src={src} alt={`Shopify Result ${i + 1}`} className="w-full object-contain" />
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* CTA */}
-        <motion.div 
-          initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}
-          className="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-12 text-center mt-12"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4 drop-shadow-sm">Want results like these?</h2>
-          <p className="text-gray-600 font-medium mb-8">Stop wasting ad spend. Let's build a profitable acquisition system.</p>
+        {/* CTA Banner */}
+        <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/10 rounded-2xl p-6 md:p-10 text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-2">Want to scale your brand like {study.brand}?</h2>
+          <p className="text-gray-600 text-sm md:text-base mb-6 max-w-xl mx-auto">
+            Let us set up and optimize high-converting marketing campaigns for your brand.
+          </p>
           <a 
             href="https://wa.me/918200306143" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-primary hover:opacity-90 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center bg-primary hover:opacity-90 text-white px-6 py-3 rounded-full text-sm font-semibold transition-all shadow-sm"
           >
-            Book a Free Call
+            Contact Us on WhatsApp
           </a>
-        </motion.div>
+        </div>
       </div>
-
       <Footer />
-
-      {/* Fullscreen Image Lightbox */}
-      <AnimatePresence>
-        {fullscreenImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out"
-            onClick={() => setFullscreenImage(null)}
-          >
-            <button 
-              className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/50 hover:bg-white/20 rounded-full p-2 transition-colors z-[101]"
-              onClick={(e) => { e.stopPropagation(); setFullscreenImage(null); }}
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <motion.img
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              src={fullscreenImage}
-              alt="Fullscreen Result"
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
