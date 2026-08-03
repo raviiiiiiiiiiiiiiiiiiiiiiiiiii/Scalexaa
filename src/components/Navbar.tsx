@@ -56,7 +56,6 @@ export default function Navbar() {
             <a href={isHome ? "#results" : "/#results"} className="text-sm font-medium text-text-dark hover:text-primary transition-colors">Results</a>
             <Link to="/case-studies" className="text-sm font-medium text-text-dark hover:text-primary transition-colors">Case Studies</Link>
             <a href={isHome ? "#why-us" : "/#why-us"} className="text-sm font-medium text-text-dark hover:text-primary transition-colors">Why Us</a>
-            <a href={isHome ? "#faq" : "/#faq"} className="text-sm font-medium text-text-dark hover:text-primary transition-colors">FAQ</a>
             <motion.a 
               whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
               href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
@@ -83,7 +82,6 @@ export default function Navbar() {
           <a href={isHome ? "#results" : "/#results"} onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base font-medium text-text-dark hover:bg-gray-50 rounded-md">Results</a>
           <Link to="/case-studies" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base font-medium text-text-dark hover:bg-gray-50 rounded-md">Case Studies</Link>
           <a href={isHome ? "#why-us" : "/#why-us"} onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base font-medium text-text-dark hover:bg-gray-50 rounded-md">Why Us</a>
-          <a href={isHome ? "#faq" : "/#faq"} onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base font-medium text-text-dark hover:bg-gray-50 rounded-md">FAQ</a>
           <a href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="block w-full text-center bg-primary text-white px-6 py-3 rounded-full font-medium">
             Book a Call
           </a>

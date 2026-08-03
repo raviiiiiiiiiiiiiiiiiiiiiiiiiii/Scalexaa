@@ -10,7 +10,6 @@ import InstagramSection from '../components/InstagramSection';
 import Testimonials from '../components/Testimonials';
 import About from '../components/About';
 import Partners from '../components/Partners';
-import Faq from '../components/Faq';
 import Footer from '../components/Footer';
 
 export default function LandingPage() {
@@ -27,7 +26,6 @@ export default function LandingPage() {
       <Testimonials />
       <CtaSection />
       <InstagramSection />
-      <Faq />
       <Footer />
     </>
   );

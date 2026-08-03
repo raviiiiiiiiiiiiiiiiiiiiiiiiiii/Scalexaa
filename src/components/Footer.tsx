@@ -159,7 +159,6 @@ export default function Footer() {
             <a href="#how-it-works" className="text-gray-600 hover:text-primary font-medium transition-colors">How It Works</a>
             <a href="#results" className="text-gray-600 hover:text-primary font-medium transition-colors">Results</a>
             <a href="#why-us" className="text-gray-600 hover:text-primary font-medium transition-colors">Why Us</a>
-            <a href="#faq" className="text-gray-600 hover:text-primary font-medium transition-colors">FAQ</a>
           </div>
         </motion.div>
 
