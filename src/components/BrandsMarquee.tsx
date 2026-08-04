@@ -17,7 +17,7 @@ export default function BrandsMarquee() {
   ];
   
   return (
-    <section className="pt-12 pb-20 bg-bg-pale overflow-hidden">
+    <section className="pt-12 pb-20 bg-white border-b border-gray-100 overflow-hidden">
       <div className="text-center mb-8">
         <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
           <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
@@ -37,8 +37,8 @@ export default function BrandsMarquee() {
         className="relative"
       >
         {/* Gradient Masks */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-bg-pale to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg-pale to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
         
         {/* Marquee Container */}
         <div className="overflow-hidden whitespace-nowrap flex">

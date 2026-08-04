@@ -74,7 +74,7 @@ export default function Results() {
   return (
     <section 
       id="results" 
-      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] pt-20 md:pt-28 bg-bg-pale px-4 sm:px-6"
+      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] pt-20 md:pt-28 pb-20 md:pb-28 bg-white px-4 sm:px-6 shadow-sm"
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
@@ -175,31 +175,38 @@ export default function Results() {
 
 function StackCard({
   i,
+  total,
   data,
   progress,
-  range,
-  targetScale,
   onOpenModal,
 }: {
   key?: string;
   i: number;
+  total: number;
   data: SingleCardData;
   progress: MotionValue<number>;
-  range: [number, number];
-  targetScale: number;
   onOpenModal: (cardIdx: number) => void;
 }) {
   const container = useRef<HTMLDivElement>(null);
-  const scale = useTransform(progress, range, [1, targetScale]);
+  
+  // Each card i scales down as card i+1 covers it
+  const start = i / total;
+  const end = Math.min(1, (i + 1) / total);
+  const targetScale = Math.max(0.88, 1 - (total - 1 - i) * 0.015);
+  const scale = useTransform(progress, [start, end], [1, targetScale]);
+
+  // Cap offset so higher card numbers don't push off-screen
+  const topOffset = Math.min(i, 6) * 10;
 
   return (
     <div ref={container} className="h-screen sticky top-0 flex items-center justify-center">
       <motion.div
         style={{
           scale,
-          top: `calc(-2vh + ${i * 14}px)`,
+          top: `calc(-1vh + ${topOffset}px)`,
+          willChange: 'transform',
         }}
-        className="relative w-full max-w-2xl mx-auto rounded-[35px] sm:rounded-[45px] md:rounded-[55px] border-2 border-primary/20 bg-white p-4 sm:p-6 md:p-7 shadow-2xl transition-all duration-300"
+        className="relative w-full max-w-2xl mx-auto rounded-[35px] sm:rounded-[45px] md:rounded-[55px] border-2 border-primary/20 bg-white p-4 sm:p-6 md:p-7 shadow-2xl transition-shadow duration-300"
       >
         {/* Top Header Row */}
         <div className="flex flex-row items-center justify-between gap-3 mb-3 border-b border-gray-100 pb-3">
@@ -268,20 +275,16 @@ function StackSection({
 
   return (
     <main ref={container} className="relative w-full">
-      {cards.map((data, i) => {
-        const targetScale = 1 - (cards.length - i) * 0.02;
-        return (
-          <StackCard
-            key={`${data.number}-${i}`}
-            i={i}
-            data={data}
-            progress={scrollYProgress}
-            range={[i * (1 / cards.length), 1]}
-            targetScale={targetScale}
-            onOpenModal={onOpenModal}
-          />
-        );
-      })}
+      {cards.map((data, i) => (
+        <StackCard
+          key={`${data.number}-${i}`}
+          i={i}
+          total={cards.length}
+          data={data}
+          progress={scrollYProgress}
+          onOpenModal={onOpenModal}
+        />
+      ))}
     </main>
   );
 }

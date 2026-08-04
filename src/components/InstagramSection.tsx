@@ -8,7 +8,7 @@ const fadeUp = {
 
 export default function InstagramSection() {
   return (
-    <section className="py-20 md:py-24 bg-gray-50 border-t border-gray-100 px-4 overflow-hidden">
+    <section className="py-20 md:py-24 bg-white border-t border-gray-100 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <motion.div 
