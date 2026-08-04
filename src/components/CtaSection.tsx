@@ -7,7 +7,7 @@ const fadeUp = {
 
 export default function CtaSection() {
   return (
-    <section className="py-20 md:py-24 bg-white border-t border-gray-100 px-4 text-center">
+    <section className="py-20 md:py-24 bg-bg-pale px-4 text-center">
       <div className="max-w-3xl mx-auto">
         
         <motion.h2 

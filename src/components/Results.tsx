@@ -1,19 +1,11 @@
-import { motion, AnimatePresence, useScroll, useTransform, MotionValue } from 'motion/react';
-import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
-
-interface SingleCardData {
-  number: string;
-  category: string;
-  title: string;
-  caption: string;
-  image: string;
-}
 
 export default function Results() {
   const shopifyImages = [
@@ -33,53 +25,26 @@ export default function Results() {
     "https://i.ibb.co/YFstFXPf/Screenshot-2026-06-20-134340.png",
     "https://i.ibb.co/hF4f6Nrd/Screenshot-2025-12-11-131315.png"
   ];
-
-  const cardsData: SingleCardData[] = [
-    ...shopifyImages.map((img, idx) => ({
-      number: String(idx + 1).padStart(2, '0'),
-      category: "Shopify Growth",
-      title: `Shopify Revenue Result #${idx + 1}`,
-      caption: "Brand grew from zero with our strategy, store optimization, and execution.",
-      image: img,
-    })),
-    ...metaImages.map((img, idx) => ({
-      number: String(shopifyImages.length + idx + 1).padStart(2, '0'),
-      category: "Meta Ads ROAS",
-      title: `Meta Ads Campaign #${idx + 1}`,
-      caption: "High-performing Meta campaign delivering scaled volume and outstanding ROAS.",
-      image: img,
-    }))
-  ];
-
-  const [modalIndex, setModalIndex] = useState<number | null>(null);
+  
+  const [currentShopify, setCurrentShopify] = useState(0);
+  const [currentMeta, setCurrentMeta] = useState(0);
+  const [modalView, setModalView] = useState<'shopify' | 'meta' | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
-  const activeCard = modalIndex !== null ? cardsData[modalIndex] : null;
+  const nextShopify = () => { setCurrentShopify((prev) => (prev + 1) % shopifyImages.length); setZoomLevel(1); };
+  const prevShopify = () => { setCurrentShopify((prev) => (prev - 1 + shopifyImages.length) % shopifyImages.length); setZoomLevel(1); };
 
-  const handleNextImage = () => {
-    if (modalIndex === null) return;
-    setModalIndex((prev) => (prev !== null ? (prev + 1) % cardsData.length : 0));
-    setZoomLevel(1);
-  };
-
-  const handlePrevImage = () => {
-    if (modalIndex === null) return;
-    setModalIndex((prev) => (prev !== null ? (prev - 1 + cardsData.length) % cardsData.length : 0));
-    setZoomLevel(1);
-  };
+  const nextMeta = () => { setCurrentMeta((prev) => (prev + 1) % metaImages.length); setZoomLevel(1); };
+  const prevMeta = () => { setCurrentMeta((prev) => (prev - 1 + metaImages.length) % metaImages.length); setZoomLevel(1); };
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.5, 3));
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
 
   return (
-    <section 
-      id="results" 
-      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] pt-20 md:pt-28 pb-20 md:pb-28 bg-white px-4 sm:px-6 shadow-sm"
-    >
+    <section id="results" className="py-20 md:py-24 bg-bg-pale px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-16">
           <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
             <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               Scalexa Delivers
@@ -93,26 +58,87 @@ export default function Results() {
           </motion.h2>
           <motion.p 
             initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-            className="text-lg text-text-dark font-medium max-w-2xl mx-auto"
+            className="text-lg text-text-dark font-medium"
           >
             Short, actionable proof that we deliver ROI — not just impressions.
           </motion.p>
         </div>
 
-        {/* StackSection Stacking Deck */}
-        <StackSection
-          cards={cardsData}
-          onOpenModal={(cardIdx) => {
-            setModalIndex(cardIdx);
-            setZoomLevel(1);
-          }}
-        />
+        <div className="w-full space-y-12">
+          {/* Shopify Dashboard Card */}
+          <motion.div 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.1 }}
+            className="w-full"
+          >
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Shopify Dashboard Overview</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {shopifyImages.slice(0, 4).map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentShopify(i); setModalView('shopify'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Shopify Result ${i + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+              
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "These brands grew from zero with our strategy, optimization, and consistent execution."
+              </p>
+            </div>
+          </motion.div>
 
+          {/* Meta Ads Dashboard Card */}
+          <motion.div 
+            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.1 }}
+            className="w-full"
+          >
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">Meta Ads Dashboard Overview</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(0, 4).map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "Latest high-performing Meta Ads campaigns demonstrating outstanding ROAS and rapid scaling."
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {metaImages.slice(4, 8).map((img, i) => (
+                  <div 
+                    key={i + 4} 
+                    className="w-full relative bg-gray-50 rounded-xl overflow-hidden aspect-video flex items-center justify-center group cursor-zoom-in border border-gray-100 hover:shadow-md transition-shadow"
+                    onClick={() => { setCurrentMeta(i + 4); setModalView('meta'); setZoomLevel(1); }}
+                  >
+                    <img src={img} alt={`Meta Result ${i + 5}`} className="w-full h-full object-contain mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-lg md:text-xl text-text-muted italic mb-8 max-w-3xl mx-auto font-medium">
+                ☝🏻 "These screenshots show our expertise in creating and optimizing Meta Ads campaigns that deliver consistent, scaled ROI for e-commerce brands."
+              </p>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
 
-      {/* Image Modal Lightbox */}
+      {/* Image Modal */}
       <AnimatePresence>
-        {modalIndex !== null && activeCard && (
+        {modalView && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -120,7 +146,7 @@ export default function Results() {
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 touch-none overflow-hidden"
           >
             <button 
-              onClick={() => { setModalIndex(null); setZoomLevel(1); }}
+              onClick={() => { setModalView(null); setZoomLevel(1); }}
               className="absolute top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-colors z-[110]"
             >
               <X className="w-6 h-6" />
@@ -139,29 +165,29 @@ export default function Results() {
             </div>
 
             <div className="w-full h-full overflow-hidden flex items-center justify-center p-4">
-              <motion.img 
-                drag={zoomLevel > 1}
-                dragConstraints={{ left: -400, right: 400, top: -400, bottom: 400 }}
-                dragElastic={0.1}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: zoomLevel, opacity: 1 }}
-                transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                src={activeCard.image} 
-                alt="Enlarged result proof" 
-                className={`max-w-[95vw] max-h-[95vh] md:max-w-[85vw] md:max-h-[85vh] object-contain origin-center ${zoomLevel > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
-              />
+               <motion.img 
+                  drag={zoomLevel > 1}
+                  dragConstraints={{ left: -400, right: 400, top: -400, bottom: 400 }}
+                  dragElastic={0.1}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: zoomLevel, opacity: 1 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                  src={modalView === 'shopify' ? shopifyImages[currentShopify] : metaImages[currentMeta]} 
+                  alt="Enlarged result" 
+                  className={`max-w-[95vw] max-h-[95vh] md:max-w-[85vw] md:max-h-[85vh] object-contain origin-center ${zoomLevel > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
+               />
             </div>
             
             {/* Modal Controls */}
             <button 
-              onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
+              onClick={(e) => { e.stopPropagation(); modalView === 'shopify' ? prevShopify() : prevMeta(); }}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
             >
               <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
             </button>
             
             <button 
-              onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
+              onClick={(e) => { e.stopPropagation(); modalView === 'shopify' ? nextShopify() : nextMeta(); }}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors z-[110] border border-white/20"
             >
               <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
@@ -172,122 +198,3 @@ export default function Results() {
     </section>
   );
 }
-
-function StackCard({
-  i,
-  total,
-  data,
-  progress,
-  onOpenModal,
-}: {
-  key?: string;
-  i: number;
-  total: number;
-  data: SingleCardData;
-  progress: MotionValue<number>;
-  onOpenModal: (cardIdx: number) => void;
-}) {
-  const container = useRef<HTMLDivElement>(null);
-  
-  // Each card i scales down as card i+1 covers it
-  const start = i / total;
-  const end = Math.min(1, (i + 1) / total);
-  const targetScale = Math.max(0.88, 1 - (total - 1 - i) * 0.015);
-  const scale = useTransform(progress, [start, end], [1, targetScale]);
-
-  // Cap offset so higher card numbers don't push off-screen
-  const topOffset = Math.min(i, 6) * 10;
-
-  return (
-    <div ref={container} className="h-screen sticky top-0 flex items-center justify-center">
-      <motion.div
-        style={{
-          scale,
-          top: `calc(-1vh + ${topOffset}px)`,
-          willChange: 'transform',
-        }}
-        className="relative w-full max-w-2xl mx-auto rounded-[35px] sm:rounded-[45px] md:rounded-[55px] border-2 border-primary/20 bg-white p-4 sm:p-6 md:p-7 shadow-2xl transition-shadow duration-300"
-      >
-        {/* Top Header Row */}
-        <div className="flex flex-row items-center justify-between gap-3 mb-3 border-b border-gray-100 pb-3">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <span 
-              className="font-black text-primary/25 leading-none tracking-tighter select-none shrink-0" 
-              style={{ fontSize: 'clamp(2rem, 5vw, 60px)' }}
-            >
-              {data.number}
-            </span>
-            <div>
-              <span className="inline-block bg-[#0199e3]/10 text-primary px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-0.5">
-                {data.category}
-              </span>
-              <h3 className="text-base sm:text-lg md:text-xl font-extrabold text-text-dark tracking-tight leading-tight">
-                {data.title}
-              </h3>
-            </div>
-          </div>
-          <button
-            onClick={() => onOpenModal(i)}
-            className="inline-flex items-center gap-1.5 rounded-full border-2 border-primary/30 text-primary hover:bg-primary hover:text-white px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-sm shrink-0"
-          >
-            <span>Zoom</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-
-        {/* 16:9 Aspect Ratio Image Container */}
-        <div 
-          onClick={() => onOpenModal(i)}
-          style={{ aspectRatio: '16 / 9' }}
-          className="w-full aspect-[16/9] mx-auto relative bg-gray-50 rounded-[25px] sm:rounded-[32px] md:rounded-[38px] overflow-hidden border-2 border-gray-100/90 cursor-zoom-in group shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center p-3"
-        >
-          <img 
-            src={data.image} 
-            alt={data.title} 
-            className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" 
-          />
-          <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow-md border border-gray-200">
-            <ZoomIn className="w-4 h-4 text-primary" />
-          </div>
-        </div>
-
-        {/* Caption below image */}
-        <p className="text-center text-xs text-text-muted italic font-medium mt-2.5 max-w-sm mx-auto line-clamp-2">
-          "{data.caption}"
-        </p>
-      </motion.div>
-    </div>
-  );
-}
-
-function StackSection({
-  cards,
-  onOpenModal,
-}: {
-  cards: SingleCardData[];
-  onOpenModal: (cardIdx: number) => void;
-}) {
-  const container = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
-  return (
-    <main ref={container} className="relative w-full">
-      {cards.map((data, i) => (
-        <StackCard
-          key={`${data.number}-${i}`}
-          i={i}
-          total={cards.length}
-          data={data}
-          progress={scrollYProgress}
-          onOpenModal={onOpenModal}
-        />
-      ))}
-    </main>
-  );
-}
-
-
-
