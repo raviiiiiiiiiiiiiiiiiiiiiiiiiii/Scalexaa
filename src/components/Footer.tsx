@@ -21,14 +21,6 @@ export default function Footer() {
           initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
           className="mb-12"
         >
-          <motion.a 
-            whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
-            className="bg-accent hover:bg-[#86c02a] text-gray-900 px-10 py-4 rounded-full text-lg font-bold inline-block border-[1px] border-black/10 shadow-[0_0_20px_rgba(163,230,53,0.3)] mb-8"
-          >
-            Book a Free Call
-          </motion.a>
-          
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm font-medium text-gray-600">
             <a href="mailto:scalexa07@gmail.com" className="hover:text-primary transition-colors">
               📧 scalexa07@gmail.com

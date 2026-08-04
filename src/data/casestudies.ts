@@ -4,7 +4,7 @@ export const caseStudies = [
     brand: "Xenora Fashion",
     niche: "D2C Fashion & Apparel",
     websiteUrl: "https://shopxenora.myshopify.com/",
-    challenge: "Xenora was spending ₹40,000/month with a ROAS of 1.8, barely breaking even. Creatives were generic and audiences had no retargeting structure.",
+    challenge: "Xenora was <red>spending ₹40,000/month</red> with a <red>ROAS of 1.8</red>, <red>barely breaking even</red>. Creatives were <red>generic</red> and audiences had <red>no retargeting structure</red>.",
     strategy: "Rebuilt full funnel: TOF with UGC creatives, MOF with engagement retargeting, BOF with dynamic product ads. Weekly creative testing framework to identify winners fast.",
     results: [
       { label: "ROAS", value: "6.4x" },
@@ -20,7 +20,7 @@ export const caseStudies = [
     brand: "Dhanaya",
     niche: "D2C Dropshipping: Kids' Toys & Learning Kits",
     websiteUrl: "https://dhanaya.com/",
-    challenge: "Dhanaya was in the early stages of selling children's toys without prior audience data. Low ROAS of 1.5x and high 70% return rate.",
+    challenge: "Dhanaya was in the early stages of selling children's toys <red>without prior audience data</red>. <red>Low ROAS of 1.5x</red> and <red>high 70% return rate</red>.",
     strategy: "Structured audience targeting, rapid creative testing, and optimized campaign allocation. Scaled winning creatives while bringing CPP under control and cutting RTO from 70% to 36%.",
     results: [
       { label: "ROAS Achieved", value: "10.05x" },

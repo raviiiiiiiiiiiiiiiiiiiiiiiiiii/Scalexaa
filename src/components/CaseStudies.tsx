@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, MotionValue } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { caseStudies } from '../data/casestudies';
 import { ArrowUpRight, TrendingUp } from 'lucide-react';
+import { renderTextWithHighlights } from '../utils/highlight';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -56,8 +57,8 @@ function CaseStudyStackCard({ i, total, study, progress }: CaseStudyCardProps) {
           </div>
 
           {/* Core Brief & Key Results Grid */}
-          <p className="text-sm sm:text-base text-text-dark/80 font-medium leading-relaxed mb-6 line-clamp-2">
-            {study.challenge}
+          <p className="text-sm sm:text-base text-text-dark/80 font-medium leading-relaxed mb-6">
+            {renderTextWithHighlights(study.challenge)}
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-gray-50 border border-gray-100 rounded-2xl p-3.5 mb-2 text-center">
@@ -72,7 +73,7 @@ function CaseStudyStackCard({ i, total, study, progress }: CaseStudyCardProps) {
 
         {/* Action Link */}
         <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-xs text-text-muted font-semibold">Verified Campaign Results</span>
+          <span className="hidden sm:inline text-xs text-text-muted font-semibold">Verified Campaign Results</span>
           <Link
             to={`/case-studies/${study.slug}`}
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary group-hover:translate-x-1 transition-transform"

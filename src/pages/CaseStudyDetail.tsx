@@ -3,6 +3,7 @@ import { caseStudies } from '../data/casestudies';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
+import { renderTextWithHighlights } from '../utils/highlight';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
@@ -80,8 +81,8 @@ export default function CaseStudyDetail() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
             <h2 className="text-xl font-bold text-text-dark mb-4">The Challenge</h2>
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed whitespace-pre-line">
-              {study.challenge}
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+              {renderTextWithHighlights(study.challenge)}
             </p>
           </div>
           <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
