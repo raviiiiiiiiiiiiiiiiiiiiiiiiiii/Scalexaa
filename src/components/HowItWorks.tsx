@@ -1,98 +1,143 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform, MotionValue } from 'motion/react';
+import { useRef, ReactNode } from 'react';
 import { ClipboardList, Pointer, Play, Star } from 'lucide-react';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-const steps = [
+interface StepData {
+  stepNum: string;
+  icon: ReactNode;
+  title: string;
+  desc: string;
+}
+
+const steps: StepData[] = [
   {
-    icon: <ClipboardList className="w-6 h-6 text-teal-700" />,
-    title: "Discovery Call",
-    desc: "We learn about your brand, goals, current ad setup, and target audience.",
-    bgColor: "bg-teal-50",
-    iconBg: "bg-teal-100",
-    align: "md:ml-0",
+    stepNum: "01",
+    icon: <ClipboardList className="w-6 h-6 text-primary" />,
+    title: "Discovery & Brand Alignment",
+    desc: "We analyze your brand, growth goals, current Meta ad setup, margins, and target customer personas.",
   },
   {
-    icon: <Pointer className="w-6 h-6 text-purple-700" />,
-    title: "Strategy & Creative Setup",
-    desc: "We build your funnel, audiences, ad creatives, and full campaign structure.",
-    bgColor: "bg-purple-100",
-    iconBg: "bg-purple-200",
-    align: "md:ml-24",
+    stepNum: "02",
+    icon: <Pointer className="w-6 h-6 text-primary" />,
+    title: "Funnel & Creative Strategy",
+    desc: "We build your conversion-focused ad funnel, custom audience segments, and high-converting ad copy.",
   },
   {
-    icon: <Play className="w-6 h-6 text-white" />,
-    title: "Launch & Optimize",
-    desc: "Campaigns go live. We monitor, A/B test, and scale what's working.",
-    bgColor: "bg-primary",
-    iconBg: "bg-primary/30",
-    textColor: "text-white",
-    descColor: "text-white/80",
-    align: "md:ml-48",
+    stepNum: "03",
+    icon: <Play className="w-6 h-6 text-primary" />,
+    title: "Launch & Rapid A/B Testing",
+    desc: "Campaigns go live with strict budget controls. We test creatives, placements, and audiences to identify winners.",
   },
   {
-    icon: <Star className="w-6 h-6 text-indigo-100" />,
-    title: "Reports & Scaling",
-    desc: "Weekly transparent reports with ROAS, sales, and a clear scaling roadmap.",
-    bgColor: "bg-indigo-900",
-    iconBg: "bg-indigo-800",
-    textColor: "text-white",
-    descColor: "text-indigo-200",
-    align: "md:ml-72",
+    stepNum: "04",
+    icon: <Star className="w-6 h-6 text-primary" />,
+    title: "Scale & Transparent Reporting",
+    desc: "We aggressively scale profitable ad sets while delivering weekly live dashboards and actionable ROI reports.",
   }
 ];
 
+function StepStackCard({
+  i,
+  total,
+  step,
+  progress,
+}: {
+  key?: string | number;
+  i: number;
+  total: number;
+  step: StepData;
+  progress: MotionValue<number>;
+}) {
+  const targetScale = 1 - (total - 1 - i) * 0.035;
+  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
+  const stickyTop = 100 + i * 20;
+
+  return (
+    <div 
+      className="sticky flex items-center justify-center mb-6"
+      style={{ top: `${stickyTop}px` }}
+    >
+      <motion.div
+        style={{
+          scale,
+          willChange: 'transform',
+        }}
+        className="relative w-full max-w-2xl bg-white rounded-[32px] sm:rounded-[40px] border-2 border-primary/20 p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-shadow duration-300 flex flex-col justify-between overflow-hidden group"
+      >
+        <div>
+          <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-100">
+            <div className="w-12 h-12 rounded-2xl bg-[#0199e3]/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+              {step.icon}
+            </div>
+            <span 
+              className="font-black text-primary/25 group-hover:text-primary/40 leading-none tracking-tighter select-none transition-colors"
+              style={{ fontSize: 'clamp(2rem, 4vw, 44px)' }}
+            >
+              {step.stepNum}
+            </span>
+          </div>
+
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-text-dark tracking-tight mb-3">
+            {step.title}
+          </h3>
+          <p className="text-sm sm:text-base md:text-lg text-text-dark/70 font-medium leading-relaxed">
+            {step.desc}
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
   return (
     <section 
       id="how-it-works" 
-      className="relative z-10 bg-white px-4 pt-16 sm:pt-20 pb-20 sm:pb-24 md:pb-28 overflow-hidden shadow-sm"
+      className="relative z-10 bg-white px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto flex flex-col items-center">
+      <div className="max-w-4xl mx-auto">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
-            <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
               Simple Process
             </span>
           </motion.div>
           <motion.h2 
             initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight"
           >
-            <span className="text-text-dark">How it</span> <span className="text-gray-400">works</span>
+            <span className="text-text-dark">How It</span> <span className="text-primary">Works</span>
           </motion.h2>
           <motion.p 
             initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-            className="text-lg text-text-dark font-medium"
+            className="text-base sm:text-lg text-text-dark/80 font-medium max-w-xl mx-auto leading-relaxed"
           >
-            From first call to profitable scaling — we make it seamless.
+            From initial strategy call to profitable scaling, a simple, transparent 4-step growth roadmap.
           </motion.p>
         </div>
 
-        <div className="w-full flex flex-col gap-4">
+        {/* Stacking Scroll Cards Container */}
+        <div ref={container} className="relative w-full min-h-[140vh] pb-8">
           {steps.map((step, i) => (
-            <motion.div
+            <StepStackCard
               key={i}
-              initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
-              className={`p-6 rounded-2xl w-full md:w-3/4 flex gap-4 ${step.bgColor} ${step.align}`}
-            >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${step.iconBg}`}>
-                {step.icon}
-              </div>
-              <div>
-                <h3 className={`text-xl font-bold mb-2 ${step.textColor || 'text-text-dark'}`}>
-                  {step.title}
-                </h3>
-                <p className={`text-base ${step.descColor || 'text-text-muted'}`}>
-                  {step.desc}
-                </p>
-              </div>
-            </motion.div>
+              i={i}
+              total={steps.length}
+              step={step}
+              progress={scrollYProgress}
+            />
           ))}
         </div>
 

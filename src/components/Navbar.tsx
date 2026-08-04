@@ -43,6 +43,7 @@ export default function Navbar() {
     { label: 'Home', href: isHome ? '#' : '/' },
     { label: 'Services', href: isHome ? '#services' : '/#services' },
     { label: 'Results', href: isHome ? '#results' : '/#results' },
+    { label: 'Case Studies', href: '/case-studies' },
     { label: 'Contact', href: isHome ? '#cta' : '/#cta' },
   ];
 

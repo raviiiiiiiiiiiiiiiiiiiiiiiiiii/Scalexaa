@@ -31,7 +31,7 @@ export default function Services() {
   return (
     <section 
       id="services" 
-      className="relative z-10 bg-white px-5 sm:px-8 md:px-10 pt-10 sm:pt-14 md:pt-16 pb-20 sm:pb-24 md:pb-32 overflow-hidden shadow-sm"
+      className="relative z-10 bg-white px-5 sm:px-8 md:px-10 pt-20 sm:pt-28 md:pt-36 pb-20 sm:pb-24 md:pb-32 overflow-hidden shadow-sm"
     >
       <div className="max-w-7xl mx-auto">
         {/* HEADING */}

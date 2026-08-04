@@ -132,9 +132,9 @@ export default function Hero() {
                 <div className="mb-3.5 sm:mb-5">
                   <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
                     <span>
-                      {step === 1 && "Step 1/3 — The Basics"}
-                      {step === 2 && 'Step 2/3 — Brand Overview'}
-                      {step === 3 && 'Step 3/3 — Timeline & Budget'}
+                      {step === 1 && "Step 1/3 - The Basics"}
+                      {step === 2 && 'Step 2/3 - Brand Overview'}
+                      {step === 3 && 'Step 3/3 - Timeline & Budget'}
                     </span>
                     <span className="font-bold text-foreground">{step}/3</span>
                   </div>

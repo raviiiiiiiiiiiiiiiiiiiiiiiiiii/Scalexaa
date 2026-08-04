@@ -1,12 +1,10 @@
-import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import BrandsMarquee from '../components/BrandsMarquee';
 import Results from '../components/Results';
 import Services from '../components/Services';
 import HowItWorks from '../components/HowItWorks';
 import Comparison from '../components/Comparison';
-import CtaSection from '../components/CtaSection';
-import InstagramSection from '../components/InstagramSection';
+import CaseStudies from '../components/CaseStudies';
 import Testimonials from '../components/Testimonials';
 import About from '../components/About';
 import Partners from '../components/Partners';
@@ -22,10 +20,9 @@ export default function LandingPage() {
       <Partners />
       <HowItWorks />
       <Comparison />
-      <About />
+      <CaseStudies />
       <Testimonials />
-      <CtaSection />
-      <InstagramSection />
+      <About />
       <Footer />
     </>
   );

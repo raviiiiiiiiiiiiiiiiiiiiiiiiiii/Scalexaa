@@ -24,7 +24,7 @@ export default function About() {
               <span className="text-text-dark">About</span> <span className="text-primary">Scalexa</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Scalexa is a performance-driven Meta Ads agency built for D2C, eCommerce, and Dropshipping brands. We don't run ads — we build growth systems. Every campaign is backed by data, built around your margins, and optimized for real profit. We started Scalexa with one belief: every brand deserves agency-level execution without the agency-level fluff.
+              Scalexa is a performance-driven Meta Ads agency built for D2C, eCommerce, and Dropshipping brands. We don't run ads: we build growth systems. Every campaign is backed by data, built around your margins, and optimized for real profit. We started Scalexa with one belief: every brand deserves agency-level execution without the agency-level fluff.
             </p>
             
             <div className="flex flex-wrap gap-3">
