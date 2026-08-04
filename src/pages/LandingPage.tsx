@@ -16,8 +16,8 @@ export default function LandingPage() {
   return (
     <>
       <Hero />
-      <BrandsMarquee />
       <Services />
+      <BrandsMarquee />
       <Results />
       <Partners />
       <HowItWorks />

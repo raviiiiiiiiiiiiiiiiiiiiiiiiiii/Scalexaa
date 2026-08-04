@@ -17,7 +17,7 @@ export default function BrandsMarquee() {
   ];
   
   return (
-    <section className="pt-12 pb-20 bg-white border-b border-gray-100 overflow-hidden">
+    <section className="py-14 sm:py-16 md:py-20 bg-white overflow-hidden border-t border-gray-100">
       <div className="text-center mb-8">
         <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
           <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">

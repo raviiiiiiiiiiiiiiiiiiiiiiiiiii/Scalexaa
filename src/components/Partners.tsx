@@ -10,7 +10,7 @@ export default function Partners() {
   return (
     <section 
       id="partners" 
-      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-4 pt-20 sm:pt-24 md:pt-28 pb-20 sm:pb-24 md:pb-28 shadow-sm"
+      className="relative z-10 bg-white px-4 pt-16 sm:pt-20 pb-16 sm:pb-20"
     >
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">

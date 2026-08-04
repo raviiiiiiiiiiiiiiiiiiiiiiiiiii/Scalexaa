@@ -73,7 +73,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen lg:h-screen w-full flex flex-col justify-between bg-background overflow-hidden font-body">
+    <section className="relative min-h-[90vh] md:min-h-screen w-full flex flex-col justify-center bg-background overflow-hidden font-body pt-28 sm:pt-36 md:pt-40 pb-6 sm:pb-8">
       {/* Background Video (100% full clarity, zero overlay filter) */}
       <video
         autoPlay
@@ -85,7 +85,7 @@ export default function Hero() {
       />
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col items-center justify-center py-6 lg:py-8">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-auto flex flex-col items-center justify-center">
         
         {/* Headline */}
         <motion.h1
