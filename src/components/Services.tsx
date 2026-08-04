@@ -1,10 +1,5 @@
 import { motion } from 'motion/react';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
-
 const services = [
   {
     title: "Meta Ads Campaign Strategy",
@@ -34,47 +29,65 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-24 bg-white px-4">
+    <section 
+      id="services" 
+      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-28 pb-20 sm:pb-24 md:pb-32 overflow-hidden shadow-sm"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}>
-            <span className="inline-block bg-[#0199e3]/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-              Our Expertise
-            </span>
-          </motion.div>
-          <motion.h2 
-            initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-            className="text-3xl md:text-5xl font-bold mb-4"
-          >
-            <span className="text-text-dark">Services That Deliver.</span> <span className="text-gray-400">Results That Pay</span>
-          </motion.h2>
-        </div>
+        {/* HEADING */}
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center font-black uppercase text-text-dark tracking-tight leading-none mb-16 sm:mb-20 md:mb-28"
+          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+        >
+          OUR SERVICES
+        </motion.h2>
 
-        <div className="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x">
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 * i }}
-              className="min-w-[320px] md:min-w-[380px] bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col snap-start overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-text-dark mb-2">{service.title}</h3>
-                <p className="text-text-muted mb-6 flex-grow">{service.desc}</p>
-                <div>
-                  <motion.a 
-                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                    href="https://wa.me/918200306143" target="_blank" rel="noopener noreferrer" 
-                    className="w-max bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium inline-block text-center"
-                  >
-                    Get Started
-                  </motion.a>
+        {/* LIST LAYOUT */}
+        <div className="max-w-5xl mx-auto">
+          {services.map((service, i) => {
+            const num = String(i + 1).padStart(2, '0');
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-12 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,0,0.15)] last:border-b-0"
+              >
+                {/* Big Number Left */}
+                <div 
+                  className="font-black text-text-dark leading-none tracking-tighter shrink-0 select-none"
+                  style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
+                >
+                  {num}
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Name + Description Stacked Right */}
+                <div className="flex-1 space-y-2 md:space-y-3">
+                  <h3 
+                    className="font-medium uppercase text-text-dark tracking-tight"
+                    style={{ fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p 
+                    className="font-light text-text-dark leading-relaxed max-w-2xl opacity-60"
+                    style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
+                  >
+                    {service.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+

@@ -25,7 +25,10 @@ export default function Comparison() {
   ];
 
   return (
-    <section id="why-us" className="py-20 md:py-24 bg-white px-4">
+    <section 
+      id="why-us" 
+      className="relative z-10 -mt-10 sm:-mt-12 md:-mt-14 bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-4 pt-20 sm:pt-24 md:pt-28 pb-20 sm:pb-24 md:pb-28 shadow-sm"
+    >
       <div className="max-w-5xl mx-auto">
         
         <div className="text-center mb-16">
